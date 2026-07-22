@@ -7,7 +7,6 @@ export interface Category {
   name: string;
   slug: string;
   description: string;
-  productCount: number;
 }
 
 export interface Industry {
@@ -15,7 +14,6 @@ export interface Industry {
   name: string;
   slug: string;
   description: string;
-  productCount: number;
 }
 
 export interface Brand {
@@ -41,6 +39,14 @@ export interface Product {
   availabilityStatus: AvailabilityStatus;
   isFeatured: boolean;
   voltage: string | null;
+  /** Granular product type within its category, e.g. "Rotary Hammer". Used for the Product Type filter facet. */
+  productType?: string;
+  /** How the tool is driven: "Cordless (Battery)", "Corded / Mains", "Petrol / Gasoline", "Manual", etc. */
+  powerSource?: string;
+  /** Battery platform, e.g. "P20S", "S12" — null/undefined when not battery-based. */
+  platform?: string | null;
+  /** Outbound link to the manufacturer's own product page, for confirming specifications. */
+  detailUrl?: string;
 }
 
 export interface BusinessSettings {

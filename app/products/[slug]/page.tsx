@@ -81,7 +81,7 @@ export default async function ProductDetailPage({
           <div className="flex flex-wrap items-center gap-2">
             <StatusBadge status={product.availabilityStatus} />
             {product.isFeatured && (
-              <span className="inline-flex items-center rounded-full bg-brand-yellow px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-brand-graphite">
+              <span className="inline-flex items-center rounded-full bg-brand-orange px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-brand-graphite">
                 Featured
               </span>
             )}
@@ -93,7 +93,7 @@ export default async function ProductDetailPage({
 
           <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-brand-steel">
             <span>
-              SKU <span className="text-brand-white">{product.sku}</span>
+              SKU <span className="font-mono-meta text-brand-white">{product.sku}</span>
             </span>
             <span>
               Brand <span className="text-brand-white">{brand?.name}</span>

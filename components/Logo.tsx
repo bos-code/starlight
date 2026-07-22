@@ -1,12 +1,10 @@
+import { StarMark } from "./brand/StarMark";
+
 export function LogoMark({ className = "h-8 w-8" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 40 40" className={className} fill="none" aria-hidden="true">
-      <rect width="40" height="40" rx="8" className="fill-brand-orange" />
-      <path
-        d="M20 6l3.09 8.26L31 17l-7.91 2.74L20 28l-3.09-8.26L9 17l7.91-2.74L20 6z"
-        className="fill-brand-graphite"
-      />
-    </svg>
+    <span className={`relative inline-flex items-center justify-center rounded-lg bg-brand-orange ${className}`}>
+      <StarMark className="h-[60%] w-[60%] text-brand-graphite" />
+    </span>
   );
 }
 

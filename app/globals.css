@@ -1,19 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand palette — Starlite Tools Digital Showroom */
+  /* Foundation — deep graphite/navy, the site's default surface */
   --color-navy: #0b1f33;
-  --color-navy-light: #14304d;
-  --color-graphite: #15171a;
-  --color-graphite-light: #1d2025;
-  --color-surface: #1a1d23;
-  --color-surface-raised: #21252c;
-  --color-border: #2c3138;
+  --color-navy-light: #16324f;
+  --color-graphite: #121316;
+  --color-graphite-light: #1b1d22;
+  --color-surface: #191b20;
+  --color-surface-raised: #21242b;
+  --color-border: #2b2f37;
   --color-steel: #a8b0ba;
   --color-steel-dim: #6b7280;
-  --color-yellow: #f5c400;
-  --color-orange: #f97316;
   --color-white: #f7f8fa;
+
+  /* Warm industrial ivory — used sparingly for selected light sections */
+  --color-ivory: #f2ede0;
+  --color-ivory-raised: #ffffff;
+  --color-ivory-border: #ddd4bf;
+  --color-ivory-ink: #241f16;
+  --color-ivory-ink-dim: #5c5443;
+
+  /* Action + state colors */
+  --color-orange: #f97316;
+  --color-orange-dim: #c2570a;
+  --color-amber: #f5a524;
+  --color-green: #22c55e;
+  --color-red: #ef4444;
+
+  /* Reserved strictly for INGCO-specific content (P20S banner, INGCO badges) */
+  --color-ingco-yellow: #f5c400;
 
   --background: var(--color-graphite);
   --foreground: var(--color-white);
@@ -32,12 +47,24 @@
   --color-brand-border: var(--color-border);
   --color-brand-steel: var(--color-steel);
   --color-brand-steel-dim: var(--color-steel-dim);
-  --color-brand-yellow: var(--color-yellow);
-  --color-brand-orange: var(--color-orange);
   --color-brand-white: var(--color-white);
+
+  --color-brand-ivory: var(--color-ivory);
+  --color-brand-ivory-raised: var(--color-ivory-raised);
+  --color-brand-ivory-border: var(--color-ivory-border);
+  --color-brand-ivory-ink: var(--color-ivory-ink);
+  --color-brand-ivory-ink-dim: var(--color-ivory-ink-dim);
+
+  --color-brand-orange: var(--color-orange);
+  --color-brand-orange-dim: var(--color-orange-dim);
+  --color-brand-amber: var(--color-amber);
+  --color-brand-green: var(--color-green);
+  --color-brand-red: var(--color-red);
+  --color-brand-ingco-yellow: var(--color-ingco-yellow);
 
   --font-heading: var(--font-barlow-condensed);
   --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
@@ -51,12 +78,20 @@ body {
     font-family: var(--font-heading), Arial, Helvetica, sans-serif;
   }
 
+  .font-mono-meta {
+    font-family: var(--font-mono), ui-monospace, monospace;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
 
   .input {
     @apply w-full rounded-lg border border-brand-border bg-brand-graphite px-3.5 py-2.5 text-sm text-brand-white placeholder:text-brand-steel-dim focus:border-brand-orange focus:outline-none;
+  }
+
+  .input-ivory {
+    @apply w-full rounded-lg border border-brand-ivory-border bg-brand-ivory-raised px-3.5 py-2.5 text-sm text-brand-ivory-ink placeholder:text-brand-ivory-ink-dim focus:border-brand-orange focus:outline-none;
   }
 }
 
@@ -68,7 +103,40 @@ body {
   background-size: 40px 40px;
 }
 
+.grid-texture-ivory {
+  background-image:
+    linear-gradient(rgba(36, 31, 22, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 31, 22, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
 ::selection {
   background: var(--color-orange);
   color: var(--color-white);
+}
+
+@keyframes fracture-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.95; }
+}
+.animate-fracture-pulse {
+  animation: fracture-pulse 4.5s ease-in-out infinite;
+}
+
+@keyframes spark-flicker {
+  0%, 40%, 100% { opacity: 0.15; }
+  48% { opacity: 1; }
+  56% { opacity: 0.25; }
+  72% { opacity: 0.85; }
+  80% { opacity: 0.15; }
+}
+.animate-spark-flicker {
+  animation: spark-flicker 3.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fracture-pulse,
+  .animate-spark-flicker {
+    animation: none;
+  }
 }

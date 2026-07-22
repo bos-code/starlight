@@ -1,4 +1,4 @@
-import { businessSettings } from "./data";
+import { businessSettings } from "@/config/business";
 import type { BuyerType, Product, QuoteLineItem } from "./types";
 
 export interface QuoteBuyerDetails {

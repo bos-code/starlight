@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { Logo } from "./Logo";
-import { businessSettings, categories } from "@/lib/data";
+import { categories } from "@/lib/data";
+import { businessSettings } from "@/config/business";
 
 export function Footer() {
   return (

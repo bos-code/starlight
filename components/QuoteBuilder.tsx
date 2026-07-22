@@ -89,7 +89,7 @@ export function QuoteBuilder() {
           Quote request saved
         </h1>
         <p className="mt-2 text-sm text-brand-steel">
-          Reference <span className="text-brand-white">{reference}</span> has been recorded.
+          Reference <span className="font-mono-meta text-brand-white">{reference}</span> has been recorded.
           WhatsApp should have opened in a new tab with your prepared message — send it to
           reach the Starlite sales team.
         </p>
