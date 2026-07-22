@@ -1,15 +1,4 @@
-import { BatteryCharging, Cog, Disc3, Flame, Fuel, HardHat, Ruler, Wrench, type LucideIcon } from "lucide-react";
-
-const categoryIcons: Record<string, LucideIcon> = {
-  "power-tools": Cog,
-  "cordless-tools": BatteryCharging,
-  "hand-tools": Wrench,
-  "welding-equipment": Flame,
-  "safety-equipment": HardHat,
-  accessories: Disc3,
-  generators: Fuel,
-  "measuring-tools": Ruler,
-};
+import { getCategoryIcon } from "@/lib/category-icons";
 
 export function ProductImagePlaceholder({
   categorySlug,
@@ -22,7 +11,7 @@ export function ProductImagePlaceholder({
   className?: string;
   iconClassName?: string;
 }) {
-  const Icon = categoryIcons[categorySlug] ?? Wrench;
+  const Icon = getCategoryIcon(categorySlug);
   return (
     <div
       className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-brand-navy-light via-brand-navy to-brand-graphite-light ${className}`}

@@ -23,7 +23,7 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="absolute left-2 top-2 flex flex-wrap gap-1.5">
           <StatusBadge status={product.availabilityStatus} />
           {product.isFeatured && (
-            <span className="inline-flex items-center rounded-full bg-brand-yellow px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-brand-graphite">
+            <span className="inline-flex items-center rounded-full bg-brand-orange px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-brand-graphite">
               Featured
             </span>
           )}

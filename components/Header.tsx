@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ClipboardList, Menu, Search, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./WhatsAppIcon";
+import { StarMark } from "./brand/StarMark";
 import { useQuote } from "@/lib/quote-context";
-import { businessSettings } from "@/lib/data";
+import { businessSettings } from "@/config/business";
 
 const navLinks = [
   { href: "/products", label: "Products" },
@@ -20,16 +22,17 @@ const navLinks = [
 export function Header() {
   const { itemCount } = useQuote();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-40 border-b border-brand-border bg-brand-graphite/95 backdrop-blur">
       <div className="hidden border-b border-brand-border/70 bg-brand-navy/60 text-[11px] text-brand-steel md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-1.5">
-          <span className="flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          <span className="font-mono-meta flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
             STL SYS: ONLINE &nbsp;·&nbsp; {businessSettings.address}, {businessSettings.state}, NG
           </span>
-          <span>{businessSettings.hours}</span>
+          <span className="font-mono-meta">{businessSettings.hours}</span>
         </div>
       </div>
 
@@ -39,15 +42,21 @@ export function Header() {
         </Link>
 
         <nav className="hidden flex-1 items-center gap-6 lg:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-sm font-medium text-brand-steel transition hover:text-brand-white"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = link.href === pathname || (link.href !== "/" && pathname.startsWith(link.href.split("?")[0].split("#")[0]) && link.href.split("?")[0].split("#")[0] !== "/");
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`flex items-center gap-1.5 text-sm font-medium transition ${
+                  isActive ? "text-brand-white" : "text-brand-steel hover:text-brand-white"
+                }`}
+              >
+                {isActive && <StarMark className="h-2.5 w-2.5 text-brand-orange" />}
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden flex-1 items-center rounded-lg border border-brand-border bg-brand-surface px-3 py-2 md:flex lg:max-w-xs">

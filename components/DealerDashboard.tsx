@@ -10,17 +10,17 @@ import {
   Package,
 } from "lucide-react";
 import { getStoredQuotes, type QuoteStatus, type StoredQuote } from "@/lib/quote-log";
-import { businessSettings } from "@/lib/data";
+import { businessSettings } from "@/config/business";
 
 const statusStyles: Record<QuoteStatus, string> = {
   New: "bg-brand-orange/15 text-brand-orange ring-brand-orange/30",
-  Contacted: "bg-sky-500/15 text-sky-400 ring-sky-500/30",
-  Quoted: "bg-brand-yellow/15 text-brand-yellow ring-brand-yellow/30",
-  Negotiating: "bg-purple-500/15 text-purple-400 ring-purple-500/30",
-  "Waiting Payment": "bg-amber-500/15 text-amber-400 ring-amber-500/30",
-  Paid: "bg-emerald-500/15 text-emerald-400 ring-emerald-500/30",
-  Fulfilled: "bg-emerald-500/15 text-emerald-400 ring-emerald-500/30",
-  Cancelled: "bg-red-500/15 text-red-400 ring-red-500/30",
+  Contacted: "bg-brand-steel/15 text-brand-steel ring-brand-steel/30",
+  Quoted: "bg-brand-amber/15 text-brand-amber ring-brand-amber/30",
+  Negotiating: "bg-brand-amber/15 text-brand-amber ring-brand-amber/30",
+  "Waiting Payment": "bg-brand-amber/15 text-brand-amber ring-brand-amber/30",
+  Paid: "bg-brand-green/15 text-brand-green ring-brand-green/30",
+  Fulfilled: "bg-brand-green/15 text-brand-green ring-brand-green/30",
+  Cancelled: "bg-brand-red/15 text-brand-red ring-brand-red/30",
 };
 
 const inProgressStatuses: QuoteStatus[] = ["Contacted", "Quoted", "Negotiating", "Waiting Payment"];
@@ -158,7 +158,7 @@ export function DealerDashboard() {
                   <tbody>
                     {quotes.map((quote) => (
                       <tr key={quote.id} className="border-b border-brand-border last:border-0">
-                        <td className="px-5 py-3.5 font-medium text-brand-white">
+                        <td className="font-mono-meta px-5 py-3.5 font-medium text-brand-white">
                           {quote.reference}
                         </td>
                         <td className="px-5 py-3.5 text-brand-steel">

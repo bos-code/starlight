@@ -1,10 +1,10 @@
 import type { AvailabilityStatus } from "@/lib/types";
 
 const statusConfig: Record<AvailabilityStatus, { label: string; className: string }> = {
-  in_stock: { label: "In Stock", className: "bg-emerald-500/15 text-emerald-400 ring-emerald-500/30" },
-  low_stock: { label: "Low Stock", className: "bg-brand-orange/15 text-brand-orange ring-brand-orange/30" },
-  out_of_stock: { label: "Out of Stock", className: "bg-red-500/15 text-red-400 ring-red-500/30" },
-  price_on_request: { label: "Price on Request", className: "bg-brand-steel/15 text-brand-steel ring-brand-steel/30" },
+  in_stock: { label: "In Stock", className: "bg-brand-green/15 text-brand-green ring-brand-green/30" },
+  low_stock: { label: "Low Stock", className: "bg-brand-amber/15 text-brand-amber ring-brand-amber/30" },
+  out_of_stock: { label: "Out of Stock", className: "bg-brand-red/15 text-brand-red ring-brand-red/30" },
+  price_on_request: { label: "Confirm Availability", className: "bg-brand-steel/15 text-brand-steel ring-brand-steel/30" },
 };
 
 export function StatusBadge({ status }: { status: AvailabilityStatus }) {

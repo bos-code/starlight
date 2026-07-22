@@ -12,12 +12,13 @@ import {
   Wrench,
   Zap,
 } from "lucide-react";
-import { businessSettings, industries, products } from "@/lib/data";
+import { industries, products } from "@/lib/data";
+import { businessSettings } from "@/config/business";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductImagePlaceholder } from "@/components/ProductImagePlaceholder";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-
-const heroProduct = products.find((p) => p.slug === "ingco-20v-brushless-cordless-drill")!;
+import { DualBrandHero } from "@/components/home/dual-brand-hero";
+import { SectionMarker } from "@/components/brand/SectionMarker";
 
 const industryIcons: Record<string, typeof Building2> = {
   construction: Building2,
@@ -38,96 +39,15 @@ const featuredProducts = products.filter((p) => p.isFeatured).slice(0, 8);
 export default function HomePage() {
   return (
     <>
-      {/* HERO */}
-      <section className="grid-texture border-b border-brand-border bg-brand-graphite">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-[1.1fr_0.9fr] lg:py-20">
-          <div className="flex flex-col justify-center">
-            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-orange/40 bg-brand-orange/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-orange">
-              Industrial Grade Machinery
-            </span>
-            <h1 className="mt-5 font-heading text-4xl font-extrabold uppercase leading-[1.05] text-brand-white sm:text-5xl lg:text-6xl">
-              Tools built for <span className="text-brand-orange">work that cannot fail.</span>
-            </h1>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-brand-steel">
-              Power tools, hand tools, welding equipment, safety products and industrial
-              supplies for dealers, technicians and contractors — from Onitsha to every
-              state in Nigeria.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-2 rounded-lg bg-brand-orange px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
-              >
-                Browse Catalogue
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/quote"
-                className="inline-flex items-center gap-2 rounded-lg border border-brand-border px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-white transition hover:border-brand-white"
-              >
-                Build a Quote
-              </Link>
-            </div>
-
-            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-brand-border pt-8 sm:grid-cols-4">
-              {[
-                ["Onitsha", "Supply Hub"],
-                ["Dealer & Wholesale", "Enquiries Welcome"],
-                ["Multi-Brand", "Catalogue"],
-                ["Direct Sales", "Support"],
-              ].map(([title, sub]) => (
-                <div key={title}>
-                  <dt className="font-heading text-sm font-bold text-brand-white">{title}</dt>
-                  <dd className="text-xs text-brand-steel-dim">{sub}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          <div className="flex flex-col overflow-hidden rounded-2xl border border-brand-border bg-brand-surface">
-            <ProductImagePlaceholder
-              categorySlug="cordless-tools"
-              className="aspect-[4/3] w-full"
-              iconClassName="h-20 w-20"
-            />
-            <div className="space-y-3 p-6">
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-brand-orange">
-                Featured Product
-              </p>
-              <h3 className="font-heading text-xl font-bold text-brand-white">{heroProduct.name}</h3>
-              <p className="text-xs text-brand-steel-dim">Model {heroProduct.model}</p>
-              <dl className="grid grid-cols-2 gap-y-3 border-t border-brand-border pt-4 text-sm">
-                {heroProduct.specs.slice(0, 4).map((spec) => (
-                  <div key={spec.label}>
-                    <dt className="text-[11px] uppercase tracking-wide text-brand-steel-dim">
-                      {spec.label}
-                    </dt>
-                    <dd className="font-medium text-brand-white">{spec.value}</dd>
-                  </div>
-                ))}
-              </dl>
-              <Link
-                href={`/products/${heroProduct.slug}`}
-                className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange hover:underline"
-              >
-                View product details
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <DualBrandHero />
 
       {/* SHOP BY INDUSTRY */}
       <section id="industries" className="border-b border-brand-border bg-brand-graphite-light">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mb-8 flex items-end justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-orange">
-                Built For The Trade
-              </p>
-              <h2 className="mt-1 font-heading text-2xl font-bold uppercase text-brand-white sm:text-3xl">
+              <SectionMarker index="02" label="Built For The Trade" />
+              <h2 className="mt-2 font-heading text-2xl font-bold uppercase text-brand-white sm:text-3xl">
                 Shop by Industry
               </h2>
             </div>
@@ -142,6 +62,7 @@ export default function HomePage() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {industries.map((industry) => {
               const Icon = industryIcons[industry.slug] ?? Wrench;
+              const count = products.filter((p) => p.industryIds.includes(industry.id)).length;
               return (
                 <Link
                   key={industry.id}
@@ -152,9 +73,7 @@ export default function HomePage() {
                   <h3 className="mt-4 font-heading text-lg font-bold text-brand-white">
                     {industry.name}
                   </h3>
-                  <p className="mt-1 text-xs text-brand-steel-dim">
-                    {industry.productCount} products
-                  </p>
+                  <p className="mt-1 text-xs text-brand-steel-dim">{count} products</p>
                 </Link>
               );
             })}
@@ -171,9 +90,7 @@ export default function HomePage() {
             iconClassName="h-16 w-16"
           />
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-brand-yellow">
-              INGCO P20S System
-            </p>
+            <SectionMarker index="03" label="INGCO P20S System" tone="ingco" />
             <h2 className="mt-2 font-heading text-3xl font-bold uppercase text-brand-white">
               One Platform, More Ways to Work.
             </h2>
@@ -184,7 +101,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/products?category=cordless-tools"
-              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand-yellow px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
+              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand-ingco-yellow px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
             >
               Explore P20S System
               <ArrowRight className="h-4 w-4" />
@@ -198,10 +115,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mb-8 flex items-end justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-orange">
-                Top Sellers
-              </p>
-              <h2 className="mt-1 font-heading text-2xl font-bold uppercase text-brand-white sm:text-3xl">
+              <SectionMarker index="04" label="Top Sellers" />
+              <h2 className="mt-2 font-heading text-2xl font-bold uppercase text-brand-white sm:text-3xl">
                 Featured Products
               </h2>
             </div>
@@ -236,22 +151,20 @@ export default function HomePage() {
       </section>
 
       {/* ABOUT */}
-      <section className="border-b border-brand-border bg-brand-navy">
+      <section className="grid-texture-ivory border-b border-brand-ivory-border bg-brand-ivory">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 lg:grid-cols-2">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-brand-yellow">
-              About Starlite Tools
-            </p>
-            <h2 className="mt-2 font-heading text-3xl font-bold uppercase leading-tight text-brand-white">
+            <SectionMarker index="05" label="About Starlite Tools" tone="light" />
+            <h2 className="mt-2 font-heading text-3xl font-bold uppercase leading-tight text-brand-ivory-ink">
               Built in the market. Ready for the next scale.
             </h2>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-brand-steel">
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-brand-ivory-ink-dim">
               {businessSettings.legalName} has served the industrial, construction and
               technical communities in Nigeria with quality tools and reliable service.
               This digital showroom brings that offline strength online — for customers,
               dealers and bulk buyers who want to find products and request quotes faster.
             </p>
-            <ul className="mt-6 space-y-2.5 text-sm text-brand-steel">
+            <ul className="mt-6 space-y-2.5 text-sm text-brand-ivory-ink-dim">
               <li className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-orange" />
                 Onitsha tools market presence
@@ -280,10 +193,10 @@ export default function HomePage() {
             ].map(([stat, label]) => (
               <div
                 key={label}
-                className="rounded-xl border border-brand-border bg-brand-surface p-6 text-center"
+                className="rounded-xl border border-brand-ivory-border bg-brand-ivory-raised p-6 text-center"
               >
                 <p className="font-heading text-3xl font-extrabold text-brand-orange">{stat}</p>
-                <p className="mt-1 text-xs uppercase tracking-wide text-brand-steel-dim">
+                <p className="mt-1 text-xs uppercase tracking-wide text-brand-ivory-ink-dim">
                   {label}
                 </p>
               </div>
@@ -296,9 +209,7 @@ export default function HomePage() {
       <section id="support" className="bg-brand-graphite">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[1fr_1fr]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-brand-orange">
-              Get in Touch
-            </p>
+            <SectionMarker index="06" label="Get in Touch" />
             <h2 className="mt-2 font-heading text-3xl font-bold uppercase text-brand-white">
               Contact &amp; Location
             </h2>

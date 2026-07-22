@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, Phone, ShieldCheck } from "lucide-react";
-import { businessSettings } from "@/lib/data";
+import { businessSettings } from "@/config/business";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 export const metadata: Metadata = {
@@ -96,7 +96,7 @@ export default function AboutPage() {
 
       <section id="support" className="bg-brand-navy">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-16 text-center">
-          <p className="text-xs font-semibold uppercase tracking-wider text-brand-yellow">
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-orange">
             Support
           </p>
           <h2 className="font-heading text-2xl font-bold uppercase text-brand-white sm:text-3xl">
