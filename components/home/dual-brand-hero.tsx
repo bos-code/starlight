@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Wrench } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { products } from "@/lib/data";
 import { businessSettings } from "@/config/business";
 import { siteImages } from "@/data/site-images";
@@ -86,7 +86,6 @@ export function DualBrandHero() {
               <div className="relative aspect-square w-full max-w-[320px] overflow-hidden rounded-2xl border border-brand-ingco-yellow/20">
                 <ImageSlot
                   image={siteImages.hero.ingcoFeaturedProduct}
-                  icon={Wrench}
                   iconClassName="h-24 w-24"
                   className="h-full w-full"
                 />
@@ -160,7 +159,6 @@ export function DualBrandHero() {
           <div className="relative mx-auto mt-5 aspect-square w-full max-w-[280px] overflow-hidden rounded-2xl border border-brand-ingco-yellow/20">
             <ImageSlot
               image={siteImages.hero.ingcoFeaturedProduct}
-              icon={Wrench}
               iconClassName="h-20 w-20"
               className="h-full w-full"
             />
