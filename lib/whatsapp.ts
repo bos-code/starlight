@@ -41,6 +41,26 @@ export function buildWhatsAppUrl(message: string): string {
   return `https://wa.me/${businessSettings.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
+/** Quick single-product enquiry link for product cards — no buyer form required. */
+export function buildProductEnquiryUrl(product: Product): string {
+  const message = [
+    `Good day ${businessSettings.businessName}, I'd like to enquire about:`,
+    `${product.name} (SKU ${product.sku}).`,
+    "Please confirm price and availability.",
+  ].join(" ");
+  return buildWhatsAppUrl(message);
+}
+
+/** Dealer/wholesale price request from the product detail page. */
+export function buildDealerPriceRequestUrl(product: Product): string {
+  const message = [
+    `Good day ${businessSettings.businessName}, I am a dealer/wholesale buyer requesting pricing for:`,
+    `${product.name} (SKU ${product.sku}).`,
+    "Please share dealer pricing, minimum order quantity, and delivery options.",
+  ].join(" ");
+  return buildWhatsAppUrl(message);
+}
+
 export function quoteItemsToLines(
   items: QuoteLineItem[],
   getProduct: (id: string) => Product | undefined

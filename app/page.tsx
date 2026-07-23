@@ -6,7 +6,6 @@ import {
   Flame,
   Hammer,
   MapPin,
-  Phone,
   ShieldCheck,
   Truck,
   Wrench,
@@ -16,8 +15,8 @@ import { industries, products } from "@/lib/data";
 import { businessSettings } from "@/config/business";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductImagePlaceholder } from "@/components/ProductImagePlaceholder";
-import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { DualBrandHero } from "@/components/home/dual-brand-hero";
+import { ContactMap } from "@/components/ContactMap";
 import { SectionMarker } from "@/components/brand/SectionMarker";
 
 const industryIcons: Record<string, typeof Building2> = {
@@ -205,61 +204,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section id="support" className="bg-brand-graphite">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[1fr_1fr]">
-          <div>
-            <SectionMarker index="06" label="Get in Touch" />
-            <h2 className="mt-2 font-heading text-3xl font-bold uppercase text-brand-white">
-              Contact &amp; Location
-            </h2>
-            <p className="mt-3 max-w-md text-sm text-brand-steel">
-              Our team is ready to assist with product enquiries, quotes and technical
-              support.
-            </p>
-
-            <div className="mt-6 space-y-4 text-sm">
-              <div className="flex items-start gap-3">
-                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" />
-                <div>
-                  <p className="text-brand-white">{businessSettings.whatsappDisplay}</p>
-                  <p className="text-brand-white">{businessSettings.phoneDisplay}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" />
-                <p className="text-brand-white">
-                  {businessSettings.address}, {businessSettings.state}, {businessSettings.country}
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" />
-                <p className="text-brand-white">{businessSettings.hours}</p>
-              </div>
-            </div>
-
-            <a
-              href={`https://wa.me/${businessSettings.whatsappNumber}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-orange px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
-            >
-              <WhatsAppIcon className="h-4 w-4" />
-              Chat on WhatsApp
-            </a>
-          </div>
-
-          <div className="grid-texture flex min-h-[280px] items-center justify-center rounded-2xl border border-brand-border bg-brand-surface">
-            <div className="flex flex-col items-center gap-2 text-brand-steel-dim">
-              <MapPin className="h-10 w-10 text-brand-orange" strokeWidth={1.5} />
-              <p className="text-sm font-medium text-brand-steel">
-                {businessSettings.address}
-              </p>
-              <p className="text-xs">Map preview</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactMap />
     </>
   );
 }

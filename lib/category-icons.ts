@@ -27,7 +27,3 @@ export const categoryIcons: Record<string, LucideIcon> = {
   "safety-products": HardHat,
   "garden-tools": Sprout,
 };
-
-export function getCategoryIcon(slug: string): LucideIcon {
-  return categoryIcons[slug] ?? Wrench;
-}

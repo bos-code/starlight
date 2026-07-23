@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
 import { getBrand, getCategory, getProductBySlug, getRelatedProducts, products } from "@/lib/data";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ProductImagePlaceholder } from "@/components/ProductImagePlaceholder";
 import { ProductDetailActions } from "@/components/ProductDetailActions";
 import { ProductTabs } from "@/components/ProductTabs";
 import { ProductCard } from "@/components/ProductCard";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { buildDealerPriceRequestUrl, buildProductEnquiryUrl } from "@/lib/whatsapp";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -58,26 +61,28 @@ export default async function ProductDetailPage({
       </div>
 
       <div className="grid gap-10 lg:grid-cols-2">
-        <div>
-          <ProductImagePlaceholder
-            categorySlug={category?.slug ?? ""}
-            categoryName={category?.name}
-            className="aspect-square w-full rounded-2xl"
-            iconClassName="h-24 w-24"
-          />
-          <div className="mt-3 grid grid-cols-4 gap-3">
+        {/* Gallery: vertical thumbnails + large primary image */}
+        <div className="flex gap-3">
+          <div className="flex w-16 shrink-0 flex-col gap-2.5 sm:w-20">
             {[0, 1, 2, 3].map((i) => (
               <ProductImagePlaceholder
                 key={i}
                 categorySlug={category?.slug ?? ""}
-                className="aspect-square w-full rounded-lg"
-                iconClassName="h-7 w-7"
+                className={`aspect-square w-full rounded-lg ${i === 0 ? "ring-2 ring-brand-orange" : "opacity-70"}`}
+                iconClassName="h-5 w-5"
               />
             ))}
           </div>
+          <ProductImagePlaceholder
+            categorySlug={category?.slug ?? ""}
+            categoryName={category?.name}
+            className="aspect-square w-full flex-1 rounded-2xl"
+            iconClassName="h-24 w-24"
+          />
         </div>
 
-        <div>
+        {/* Sticky quotation panel */}
+        <div className="lg:sticky lg:top-28 lg:self-start">
           <div className="flex flex-wrap items-center gap-2">
             <StatusBadge status={product.availabilityStatus} />
             {product.isFeatured && (
@@ -112,8 +117,8 @@ export default async function ProductDetailPage({
               Request Quote — Contact for Pricing
             </p>
             <ul className="mt-3 space-y-1 text-xs text-brand-steel-dim">
-              <li>Request dealer price for bulk / wholesale orders</li>
-              <li>Delivery: 2–4 business days from Onitsha Hub</li>
+              <li>Bulk / wholesale pricing available on request</li>
+              <li>Delivery timelines confirmed by the sales team per order</li>
             </ul>
           </div>
 
@@ -121,15 +126,39 @@ export default async function ProductDetailPage({
             <ProductDetailActions product={product} />
           </div>
 
+          <div className="mt-3 grid grid-cols-2 gap-3">
+            <a
+              href={buildProductEnquiryUrl(product)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 rounded-lg border border-brand-border py-3 text-xs font-bold uppercase tracking-wide text-brand-white transition hover:border-emerald-400 hover:text-emerald-400"
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+              WhatsApp Enquiry
+            </a>
+            <a
+              href={buildDealerPriceRequestUrl(product)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 rounded-lg border border-brand-border py-3 text-xs font-bold uppercase tracking-wide text-brand-white transition hover:border-brand-orange hover:text-brand-orange"
+            >
+              Request Dealer Price
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          </div>
+
           <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-brand-border pt-6 sm:grid-cols-3">
-            {product.specs.slice(0, 6).map((spec) => (
-              <div key={spec.label}>
-                <dt className="text-[11px] uppercase tracking-wide text-brand-steel-dim">
-                  {spec.label}
-                </dt>
-                <dd className="mt-0.5 text-sm font-medium text-brand-white">{spec.value}</dd>
-              </div>
-            ))}
+            {product.specs
+              .filter((s) => s.label !== "Feature")
+              .slice(0, 6)
+              .map((spec) => (
+                <div key={spec.label}>
+                  <dt className="text-[11px] uppercase tracking-wide text-brand-steel-dim">
+                    {spec.label}
+                  </dt>
+                  <dd className="mt-0.5 text-sm font-medium text-brand-white">{spec.value}</dd>
+                </div>
+              ))}
           </dl>
         </div>
       </div>
