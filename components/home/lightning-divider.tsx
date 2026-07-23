@@ -1,9 +1,8 @@
 /**
- * The fracture that splits the hero into its Starlite and INGCO zones. Deliberately
- * irregular (not a straight diagonal) so it reads as energy breaking through the
- * interface rather than a plain CSS split. The same point set drives both this SVG
- * overlay and the clip-path polygons in dual-brand-hero.tsx, so the glow always sits
- * exactly on the seam between the two zones.
+ * The fracture that separates the hero's Starlite and INGCO zones. It lives inside
+ * a fixed-width band between two ordinary (non-clipped) content columns — the
+ * jaggedness is purely decorative, so it can never collide with or clip real
+ * content, at any viewport width.
  */
 
 export interface FracturePoint {
@@ -11,34 +10,34 @@ export interface FracturePoint {
   y: number;
 }
 
-// Percentages within the hero box. Biased toward ~65% so the Starlite zone reads as
-// the larger side, but irregular enough that it never looks like a straight cut.
+// Percentages within the band's own box. Oscillates across the full band width so
+// it reads as a real fracture, not a straight line — irregular, not diagonal.
 export const verticalFracturePoints: FracturePoint[] = [
-  { x: 65, y: 0 },
-  { x: 73, y: 6 },
-  { x: 60, y: 14 },
-  { x: 71, y: 24 },
-  { x: 57, y: 33 },
-  { x: 69, y: 44 },
-  { x: 59, y: 54 },
-  { x: 72, y: 64 },
-  { x: 61, y: 74 },
-  { x: 70, y: 85 },
-  { x: 62, y: 93 },
-  { x: 67, y: 100 },
+  { x: 50, y: 0 },
+  { x: 78, y: 7 },
+  { x: 28, y: 15 },
+  { x: 70, y: 25 },
+  { x: 20, y: 34 },
+  { x: 65, y: 45 },
+  { x: 30, y: 55 },
+  { x: 75, y: 65 },
+  { x: 25, y: 75 },
+  { x: 68, y: 86 },
+  { x: 35, y: 94 },
+  { x: 52, y: 100 },
 ];
 
 export const horizontalFracturePoints: FracturePoint[] = [
   { x: 0, y: 50 },
-  { x: 8, y: 32 },
-  { x: 18, y: 62 },
-  { x: 28, y: 38 },
-  { x: 38, y: 60 },
-  { x: 50, y: 36 },
-  { x: 62, y: 62 },
-  { x: 72, y: 40 },
-  { x: 82, y: 60 },
-  { x: 92, y: 38 },
+  { x: 7, y: 22 },
+  { x: 15, y: 78 },
+  { x: 25, y: 30 },
+  { x: 34, y: 75 },
+  { x: 45, y: 20 },
+  { x: 55, y: 80 },
+  { x: 65, y: 25 },
+  { x: 75, y: 70 },
+  { x: 86, y: 28 },
   { x: 100, y: 50 },
 ];
 
@@ -46,25 +45,12 @@ function toPathD(points: FracturePoint[]): string {
   return points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x},${p.y}`).join(" ");
 }
 
-export function getVerticalClipPolygons(): { left: string; right: string } {
-  const forward = verticalFracturePoints.map((p) => `${p.x}% ${p.y}%`);
-  const left = ["0% 0%", ...forward, "0% 100%"].join(", ");
-  const right = [...forward, "100% 100%", "100% 0%"].join(", ");
-  return { left, right };
-}
-
-export function getHorizontalClipPolygons(): { top: string; bottom: string } {
-  const forward = horizontalFracturePoints.map((p) => `${p.x}% ${p.y}%`);
-  const top = ["0% 0%", ...forward, "100% 0%"].join(", ");
-  const bottom = [...forward, "100% 100%", "0% 100%"].join(", ");
-  return { top, bottom };
-}
-
-// Short branch stubs departing from a couple of points along the main crack.
+// Short branch stubs departing from a couple of points, allowed to poke slightly
+// past the band's own edges (0/100) into the neighbouring content column.
 const verticalBranches: [FracturePoint, FracturePoint][] = [
-  [{ x: 71, y: 24 }, { x: 82, y: 19 }],
-  [{ x: 59, y: 54 }, { x: 47, y: 50 }],
-  [{ x: 70, y: 85 }, { x: 80, y: 89 }],
+  [{ x: 70, y: 25 }, { x: 108, y: 20 }],
+  [{ x: 20, y: 34 }, { x: -14, y: 30 }],
+  [{ x: 68, y: 86 }, { x: 100, y: 90 }],
 ];
 
 const sparkIndices = [3, 6, 9];
@@ -85,12 +71,12 @@ export function LightningDivider({
     <svg
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
-      className={`pointer-events-none absolute inset-0 h-full w-full ${className}`}
+      className={`pointer-events-none absolute inset-0 h-full w-full overflow-visible ${className}`}
       aria-hidden="true"
     >
       <defs>
-        <filter id={glowId} x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="1.4" result="blur" />
+        <filter id={glowId} x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur stdDeviation="1.6" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
@@ -104,10 +90,10 @@ export function LightningDivider({
         vectorEffect="non-scaling-stroke"
         fill="none"
         stroke="var(--color-orange)"
-        strokeWidth={5}
+        strokeWidth={6}
         strokeLinejoin="round"
         strokeLinecap="round"
-        opacity={0.35}
+        opacity={0.4}
         filter={`url(#${glowId})`}
         className="animate-fracture-pulse"
       />
@@ -134,10 +120,10 @@ export function LightningDivider({
         vectorEffect="non-scaling-stroke"
         fill="none"
         stroke="var(--color-white)"
-        strokeWidth={1.25}
+        strokeWidth={1.5}
         strokeLinejoin="round"
         strokeLinecap="round"
-        opacity={0.85}
+        opacity={0.9}
       />
 
       {/* Thin sparks along the seam */}
@@ -148,7 +134,7 @@ export function LightningDivider({
             key={i}
             cx={points[i].x}
             cy={points[i].y}
-            r={0.6}
+            r={1.1}
             fill="var(--color-orange)"
             className="animate-spark-flicker"
             style={{ animationDelay: `${idx * 0.6}s` }}

@@ -1,4 +1,5 @@
-import { getCategoryIcon } from "@/lib/category-icons";
+import { Wrench } from "lucide-react";
+import { categoryIcons } from "@/lib/category-icons";
 
 export function ProductImagePlaceholder({
   categorySlug,
@@ -11,7 +12,7 @@ export function ProductImagePlaceholder({
   className?: string;
   iconClassName?: string;
 }) {
-  const Icon = getCategoryIcon(categorySlug);
+  const Icon = categoryIcons[categorySlug] ?? Wrench;
   return (
     <div
       className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-brand-navy-light via-brand-navy to-brand-graphite-light ${className}`}

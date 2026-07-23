@@ -36,6 +36,9 @@ export function DealerDashboard() {
   const [quotes, setQuotes] = useState<StoredQuote[]>([]);
 
   useEffect(() => {
+    // localStorage is only available client-side, so this has to be a post-mount
+    // effect rather than a lazy useState initializer (which would run during SSR).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setQuotes(getStoredQuotes());
   }, []);
 

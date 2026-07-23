@@ -27,8 +27,12 @@ export function QuoteProvider({ children }: { children: React.ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    // Reading localStorage during render would produce a client/server markup
+    // mismatch (localStorage doesn't exist on the server), so this has to run
+    // post-mount in an effect rather than as a lazy useState initializer.
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (raw) setItems(JSON.parse(raw));
     } catch {
       // ignore malformed storage

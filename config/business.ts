@@ -48,9 +48,13 @@ export function buildDirectionsUrl(): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${businessCoordinates.lat},${businessCoordinates.lng}`;
 }
 
+/**
+ * No `marker` param — the map overlays a custom Starlite-branded pin instead of
+ * OpenStreetMap's default marker (see components/ContactMap.tsx).
+ */
 export function buildMapEmbedUrl(): string {
   const { lat, lng } = businessCoordinates;
-  const delta = 0.01;
+  const delta = 0.012;
   const bbox = [lng - delta, lat - delta, lng + delta, lat + delta].join("%2C");
-  return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat}%2C${lng}`;
+  return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik`;
 }
