@@ -1,0 +1,699 @@
+// This is your Prisma schema file.
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ENUMS
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum Role {
+  SUPER_ADMIN
+  CATALOGUE_ADMIN
+  SALES_ADMIN
+}
+
+enum PriceVisibility {
+  PUBLIC_PRICE
+  PRICE_ON_REQUEST
+  DEALER_PRICE_REQUEST
+  CONTACT_SALES
+}
+
+enum AvailabilityStatus {
+  AVAILABLE
+  CONFIRM_AVAILABILITY
+  LOW_STOCK
+  OUT_OF_STOCK
+  DISCONTINUED
+}
+
+enum QuoteStatus {
+  NEW
+  UNDER_REVIEW
+  CONTACTED
+  PRICING
+  QUOTE_SENT
+  NEGOTIATING
+  APPROVED
+  WON
+  CLOSED
+  REJECTED
+}
+
+enum BuyerType {
+  INDIVIDUAL
+  DEALER
+  CONTRACTOR
+  COMPANY
+  PROCUREMENT_TEAM
+}
+
+enum FileStatus {
+  PENDING_SCAN
+  QUARANTINED
+  ACTIVE
+  REJECTED
+}
+
+enum SecurityEventSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum IncidentStatus {
+  OPEN
+  CONTAINED
+  RESOLVED
+  CLOSED
+}
+
+enum FeedbackType {
+  WEBSITE_PROBLEM
+  PRODUCT_INFORMATION_CORRECTION
+  MISSING_PRODUCT_REQUEST
+  QUOTE_PROBLEM
+  FRAUD_OR_PHISHING_REPORT
+  CUSTOMER_SERVICE_COMPLAINT
+  FEATURE_SUGGESTION
+  ACCESSIBILITY_PROBLEM
+}
+
+enum FeedbackStatus {
+  SUBMITTED
+  TRIAGED
+  ASSIGNED
+  IN_PROGRESS
+  RESOLVED
+  CUSTOMER_NOTIFIED
+  CLOSED
+}
+
+enum BackgroundJobStatus {
+  PENDING
+  RUNNING
+  DONE
+  FAILED
+  DEAD
+}
+
+enum AuditAction {
+  PRODUCT_CREATED
+  PRODUCT_UPDATED
+  PRODUCT_PUBLISHED
+  PRODUCT_UNPUBLISHED
+  PRODUCT_DELETED
+  CATEGORY_CREATED
+  CATEGORY_UPDATED
+  CATEGORY_DELETED
+  BRAND_CREATED
+  BRAND_UPDATED
+  BRAND_DELETED
+  QUOTE_STATUS_CHANGED
+  QUOTE_PRICE_UPDATED
+  QUOTE_NOTE_ADDED
+  QUOTE_ASSIGNED
+  USER_INVITED
+  USER_CREATED
+  USER_DISABLED
+  USER_ENABLED
+  ROLE_CHANGED
+  MFA_ENROLLED
+  MFA_RESET
+  SESSION_CREATED
+  SESSION_REVOKED
+  ALL_SESSIONS_REVOKED
+  CUSTOMER_DATA_EXPORTED
+  SETTING_CHANGED
+  EMERGENCY_CONTROL_ACTIVATED
+  INCIDENT_OPENED
+  INCIDENT_RESOLVED
+  SECURITY_EVENT_RESOLVED
+  FILE_APPROVED
+  FILE_REJECTED
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STAFF IDENTITY & AUTH
+// ─────────────────────────────────────────────────────────────────────────────
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  name         String
+  role         Role
+  passwordHash String
+  isActive     Boolean   @default(true)
+  mfaEnrolled  Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  lastLoginAt  DateTime?
+  disabledAt   DateTime?
+  disabledBy   String?
+
+  sessions         Session[]
+  mfaCredentials   MfaCredential[]
+  recoveryCodes    RecoveryCode[]
+  passkeys         Passkey[]
+  sentInvitations  StaffInvitation[] @relation("InvitedBy")
+  auditLogs        AuditLog[]        @relation("AuditActor")
+  assignedQuotes   QuoteAssignment[]
+  feedbackAssigned Feedback[]        @relation("FeedbackAssignee")
+
+  @@map("users")
+}
+
+model Session {
+  id                String    @id @default(uuid())
+  userId            String
+  tokenHash         String    @unique
+  ipHash            String?
+  userAgent         String?
+  country           String?
+  createdAt         DateTime  @default(now())
+  lastActiveAt      DateTime  @default(now())
+  expiresAt         DateTime
+  absoluteExpiresAt DateTime
+  revokedAt         DateTime?
+  revokedReason     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([tokenHash])
+  @@map("sessions")
+}
+
+model StaffInvitation {
+  id          String    @id @default(uuid())
+  email       String
+  role        Role
+  tokenHash   String    @unique
+  invitedById String
+  usedAt      DateTime?
+  expiresAt   DateTime
+  createdAt   DateTime  @default(now())
+
+  invitedBy User @relation("InvitedBy", fields: [invitedById], references: [id])
+
+  @@index([tokenHash])
+  @@map("staff_invitations")
+}
+
+model MfaCredential {
+  id              String   @id @default(uuid())
+  userId          String
+  type            String
+  encryptedSecret String
+  createdAt       DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, type])
+  @@map("mfa_credentials")
+}
+
+model RecoveryCode {
+  id        String    @id @default(uuid())
+  userId    String
+  codeHash  String
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("recovery_codes")
+}
+
+model Passkey {
+  id                  String    @id @default(uuid())
+  userId              String
+  credentialId        String    @unique
+  credentialPublicKey Bytes
+  counter             BigInt
+  transports          String[]
+  deviceType          String
+  backedUp            Boolean
+  name                String?
+  createdAt           DateTime  @default(now())
+  lastUsedAt          DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("passkeys")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CATALOGUE
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Brand {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  description String?
+  logoUrl     String?
+  website     String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  products Product[]
+
+  @@map("brands")
+}
+
+model Category {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  description String?
+  parentId    String?
+  imageUrl    String?
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  parent   Category?  @relation("CategoryParent", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryParent")
+  products Product[]
+
+  @@index([parentId])
+  @@map("categories")
+}
+
+model Product {
+  id               String             @id @default(uuid())
+  name             String
+  slug             String             @unique
+  sku              String?            @unique
+  model            String?
+  brandId          String?
+  categoryId       String?
+  shortDescription String?
+  fullDescription  String?
+  features         String[]
+  applications     String[]
+  packageContents  String[]
+  voltage          String?
+  powerSource      String?
+  platform         String?
+  productType      String?
+  detailUrl        String?
+  priceVisibility  PriceVisibility    @default(PRICE_ON_REQUEST)
+  availability     AvailabilityStatus @default(AVAILABLE)
+  isFeatured       Boolean            @default(false)
+  isPublished      Boolean            @default(false)
+  publishedAt      DateTime?
+  seoTitle         String?
+  seoDescription   String?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  brand    Brand?    @relation(fields: [brandId], references: [id])
+  category Category? @relation(fields: [categoryId], references: [id])
+
+  specifications ProductSpecification[]
+  images         ProductImage[]
+  documents      ProductDocument[]
+  relatedFrom    ProductRelationship[]  @relation("RelatedFrom")
+  relatedTo      ProductRelationship[]  @relation("RelatedTo")
+  quoteItems     QuoteItem[]
+  productViews   ProductView[]
+
+  @@index([brandId])
+  @@index([categoryId])
+  @@index([isPublished])
+  @@index([isFeatured])
+  @@index([slug])
+  @@map("products")
+}
+
+model ProductSpecification {
+  id        String @id @default(uuid())
+  productId String
+  label     String
+  value     String
+  sortOrder Int    @default(0)
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@map("product_specifications")
+}
+
+model ProductImage {
+  id            String     @id @default(uuid())
+  productId     String
+  fileStatus    FileStatus @default(PENDING_SCAN)
+  originalUrl   String?
+  thumbnailUrl  String?
+  cardUrl       String?
+  detailUrl     String?
+  detailAvifUrl String?
+  width         Int?
+  height        Int?
+  fileSizeBytes Int?
+  mimeType      String?
+  altText       String?
+  checksum      String?
+  isPrimary     Boolean    @default(false)
+  sortOrder     Int        @default(0)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@map("product_images")
+}
+
+model ProductDocument {
+  id            String     @id @default(uuid())
+  productId     String
+  fileStatus    FileStatus @default(PENDING_SCAN)
+  name          String
+  type          String
+  url           String?
+  fileSizeBytes Int?
+  mimeType      String?
+  checksum      String?
+  createdAt     DateTime   @default(now())
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@map("product_documents")
+}
+
+model ProductRelationship {
+  id     String @id @default(uuid())
+  fromId String
+  toId   String
+  type   String @default("related")
+
+  from Product @relation("RelatedFrom", fields: [fromId], references: [id], onDelete: Cascade)
+  to   Product @relation("RelatedTo", fields: [toId], references: [id], onDelete: Cascade)
+
+  @@unique([fromId, toId])
+  @@map("product_relationships")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// QUOTATIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Quote {
+  id             String      @id @default(uuid())
+  reference      String      @unique
+  idempotencyKey String      @unique
+  status         QuoteStatus @default(NEW)
+  buyerType      BuyerType   @default(INDIVIDUAL)
+  contactName    String
+  contactEmail   String?
+  contactPhone   String
+  businessName   String?
+  deliveryLocation String?
+  isCollection   Boolean     @default(false)
+  requiredByDate DateTime?
+  notes          String?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  closedAt       DateTime?
+
+  items         QuoteItem[]
+  attachments   QuoteAttachment[]
+  statusHistory QuoteStatusHistory[]
+  internalNotes QuoteInternalNote[]
+  assignments   QuoteAssignment[]
+
+  @@index([status])
+  @@index([contactPhone])
+  @@index([createdAt])
+  @@map("quotes")
+}
+
+model QuoteItem {
+  id        String   @id @default(uuid())
+  quoteId   String
+  productId String
+  quantity  Int
+  note      String?
+  unitPrice Decimal? @db.Decimal(10, 2)
+  currency  String?  @default("ZAR")
+
+  quote   Quote   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+
+  @@index([quoteId])
+  @@map("quote_items")
+}
+
+model QuoteAttachment {
+  id            String     @id @default(uuid())
+  quoteId       String
+  fileStatus    FileStatus @default(PENDING_SCAN)
+  originalName  String
+  storagePath   String?
+  mimeType      String?
+  fileSizeBytes Int?
+  checksum      String?
+  uploadedAt    DateTime   @default(now())
+
+  quote Quote @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  @@index([quoteId])
+  @@map("quote_attachments")
+}
+
+model QuoteStatusHistory {
+  id          String      @id @default(uuid())
+  quoteId     String
+  fromStatus  QuoteStatus?
+  toStatus    QuoteStatus
+  changedById String?
+  reason      String?
+  changedAt   DateTime    @default(now())
+
+  quote Quote @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  @@index([quoteId])
+  @@map("quote_status_history")
+}
+
+model QuoteInternalNote {
+  id        String   @id @default(uuid())
+  quoteId   String
+  authorId  String
+  content   String
+  createdAt DateTime @default(now())
+
+  quote Quote @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  @@index([quoteId])
+  @@map("quote_internal_notes")
+}
+
+model QuoteAssignment {
+  id         String   @id @default(uuid())
+  quoteId    String
+  userId     String
+  assignedAt DateTime @default(now())
+
+  quote Quote @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@unique([quoteId, userId])
+  @@map("quote_assignments")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SITE SETTINGS & CONTENT
+// ─────────────────────────────────────────────────────────────────────────────
+
+model SiteSetting {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+  updatedBy String?
+
+  @@map("site_settings")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FEEDBACK
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Feedback {
+  id           String         @id @default(uuid())
+  type         FeedbackType
+  status       FeedbackStatus @default(SUBMITTED)
+  name         String?
+  email        String?
+  phone        String?
+  pageUrl      String?
+  productId    String?
+  quoteId      String?
+  message      String
+  severity     String?
+  assignedToId String?
+  resolution   String?
+  createdAt    DateTime       @default(now())
+  resolvedAt   DateTime?
+
+  assignedTo User? @relation("FeedbackAssignee", fields: [assignedToId], references: [id])
+
+  @@index([type])
+  @@index([status])
+  @@map("feedback")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SECURITY & AUDIT
+// ─────────────────────────────────────────────────────────────────────────────
+
+/// Audit log entries are APPEND-ONLY. No update or delete is permitted via the DAL.
+model AuditLog {
+  id            String      @id @default(uuid())
+  actorId       String?
+  action        AuditAction
+  resourceType  String
+  resourceId    String?
+  previousValue Json?
+  newValue      Json?
+  requestId     String?
+  sessionId     String?
+  reason        String?
+  occurredAt    DateTime    @default(now())
+
+  actor User? @relation("AuditActor", fields: [actorId], references: [id])
+
+  @@index([actorId])
+  @@index([action])
+  @@index([resourceType, resourceId])
+  @@index([occurredAt])
+  @@map("audit_logs")
+}
+
+model SecurityEvent {
+  id          String                @id @default(uuid())
+  type        String
+  severity    SecurityEventSeverity
+  riskScore   Int                   @default(0)
+  actorUserId String?
+  sessionId   String?
+  ipHash      String?
+  userAgent   String?
+  country     String?
+  resource    String?
+  action      String?
+  metadata    Json?
+  resolved    Boolean               @default(false)
+  resolvedAt  DateTime?
+  resolution  String?
+  incidentId  String?
+  occurredAt  DateTime              @default(now())
+
+  incident Incident? @relation(fields: [incidentId], references: [id])
+
+  @@index([actorUserId])
+  @@index([type])
+  @@index([severity])
+  @@index([occurredAt])
+  @@index([resolved])
+  @@map("security_events")
+}
+
+model Incident {
+  id          String                @id @default(uuid())
+  title       String
+  severity    SecurityEventSeverity
+  status      IncidentStatus        @default(OPEN)
+  description String?
+  timeline    Json?
+  openedAt    DateTime              @default(now())
+  resolvedAt  DateTime?
+  closedAt    DateTime?
+
+  securityEvents SecurityEvent[]
+
+  @@index([status])
+  @@index([severity])
+  @@map("incidents")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ANALYTICS & PLATFORM
+// ─────────────────────────────────────────────────────────────────────────────
+
+model SearchLog {
+  id          String   @id @default(uuid())
+  query       String
+  filters     Json?
+  resultCount Int?
+  sessionId   String?
+  ipHash      String?
+  occurredAt  DateTime @default(now())
+
+  @@index([query])
+  @@index([occurredAt])
+  @@map("search_logs")
+}
+
+model ProductView {
+  id         String   @id @default(uuid())
+  productId  String
+  sessionId  String?
+  ipHash     String?
+  occurredAt DateTime @default(now())
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@index([occurredAt])
+  @@map("product_views")
+}
+
+model BackgroundJob {
+  id          String              @id @default(uuid())
+  type        String
+  payload     Json
+  status      BackgroundJobStatus @default(PENDING)
+  attempts    Int                 @default(0)
+  maxAttempts Int                 @default(5)
+  lastError   String?
+  nextRunAt   DateTime            @default(now())
+  startedAt   DateTime?
+  completedAt DateTime?
+  createdAt   DateTime            @default(now())
+
+  @@index([status, nextRunAt])
+  @@index([type])
+  @@map("background_jobs")
+}
+
+// DB-backed rate limiting (no Redis required for MVP)
+model RateLimitEntry {
+  id        String   @id @default(uuid())
+  key       String
+  count     Int      @default(1)
+  windowEnd DateTime
+
+  @@unique([key, windowEnd])
+  @@index([key])
+  @@index([windowEnd])
+  @@map("rate_limit_entries")
+}

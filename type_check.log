@@ -1,0 +1,71 @@
+
+> starlight@0.1.0 type-check
+> tsc --noEmit
+
+app/(admin)/(shell)/audit/page.tsx(6,38): error TS2307: Cannot find module '../../../packages/auth/session' or its corresponding type declarations.
+app/(admin)/(shell)/audit/page.tsx(7,21): error TS2307: Cannot find module '../../../packages/auth/permissions' or its corresponding type declarations.
+app/(admin)/(shell)/audit/page.tsx(8,20): error TS2307: Cannot find module '../../../packages/db' or its corresponding type declarations.
+app/(admin)/(shell)/audit/page.tsx(67,24): error TS7006: Parameter 'log' implicitly has an 'any' type.
+app/(admin)/(shell)/feedback/page.tsx(6,38): error TS2307: Cannot find module '../../../packages/auth/session' or its corresponding type declarations.
+app/(admin)/(shell)/feedback/page.tsx(7,21): error TS2307: Cannot find module '../../../packages/auth/permissions' or its corresponding type declarations.
+app/(admin)/(shell)/feedback/page.tsx(8,20): error TS2307: Cannot find module '../../../packages/db' or its corresponding type declarations.
+app/(admin)/(shell)/feedback/page.tsx(98,25): error TS7006: Parameter 'item' implicitly has an 'any' type.
+app/(admin)/(shell)/layout.tsx(7,38): error TS2307: Cannot find module '../../packages/auth/session' or its corresponding type declarations.
+app/(admin)/(shell)/page.tsx(6,38): error TS2307: Cannot find module '../../packages/auth/session' or its corresponding type declarations.
+app/(admin)/(shell)/page.tsx(7,20): error TS2307: Cannot find module '../../packages/db' or its corresponding type declarations.
+app/(admin)/(shell)/products/page.tsx(5,38): error TS2307: Cannot find module '../../../../../packages/auth/session' or its corresponding type declarations.
+app/(admin)/(shell)/products/page.tsx(6,21): error TS2307: Cannot find module '../../../../../packages/auth/permissions' or its corresponding type declarations.
+app/(admin)/(shell)/products/page.tsx(7,20): error TS2307: Cannot find module '../../../../../packages/db' or its corresponding type declarations.
+app/(admin)/(shell)/products/page.tsx(8,41): error TS2307: Cannot find module '../../../../../components/ProductImagePlaceholder' or its corresponding type declarations.
+app/(admin)/(shell)/products/page.tsx(85,28): error TS7006: Parameter 'p' implicitly has an 'any' type.
+app/(admin)/(shell)/quotes/[id]/page.tsx(5,38): error TS2307: Cannot find module '../../../../packages/auth/session' or its corresponding type declarations.
+app/(admin)/(shell)/quotes/[id]/page.tsx(6,21): error TS2307: Cannot find module '../../../../packages/auth/permissions' or its corresponding type declarations.
+app/(admin)/(shell)/quotes/[id]/page.tsx(7,35): error TS2307: Cannot find module '../../../../packages/quotes/quotes.dal' or its corresponding type declarations.
+app/(admin)/(shell)/quotes/[id]/page.tsx(66,33): error TS7006: Parameter 'item' implicitly has an 'any' type.
+app/(admin)/(shell)/quotes/[id]/page.tsx(108,39): error TS7006: Parameter 'att' implicitly has an 'any' type.
+app/(admin)/(shell)/quotes/[id]/page.tsx(124,39): error TS7006: Parameter 'h' implicitly has an 'any' type.
+app/(admin)/(shell)/quotes/[id]/page.tsx(142,37): error TS7006: Parameter 'note' implicitly has an 'any' type.
+app/(admin)/(shell)/quotes/page.tsx(5,38): error TS2307: Cannot find module '../../../packages/auth/session' or its corresponding type declarations.
+app/(admin)/(shell)/quotes/page.tsx(6,21): error TS2307: Cannot find module '../../../packages/auth/permissions' or its corresponding type declarations.
+app/(admin)/(shell)/quotes/page.tsx(7,32): error TS2307: Cannot find module '../../../packages/quotes/quotes.dal' or its corresponding type declarations.
+app/(admin)/(shell)/quotes/page.tsx(93,33): error TS7006: Parameter 'quote' implicitly has an 'any' type.
+app/(admin)/(shell)/security/emergency/[action]/actions.ts(9,61): error TS2307: Cannot find module '../../../../../packages/auth/session' or its corresponding type declarations.
+app/(admin)/(shell)/security/emergency/[action]/actions.ts(10,21): error TS2307: Cannot find module '../../../../../packages/auth/permissions' or its corresponding type declarations.
+app/(admin)/(shell)/security/emergency/[action]/actions.ts(11,31): error TS2307: Cannot find module '../../../../../packages/security/audit' or its corresponding type declarations.
+app/(admin)/(shell)/security/emergency/[action]/actions.ts(12,56): error TS2307: Cannot find module '../../../../../packages/security/events' or its corresponding type declarations.
+app/(admin)/(shell)/security/emergency/[action]/actions.ts(13,20): error TS2307: Cannot find module '../../../../../packages/db' or its corresponding type declarations.
+app/(admin)/(shell)/security/emergency/[action]/page.tsx(6,38): error TS2307: Cannot find module '../../../../../packages/auth/session' or its corresponding type declarations.
+app/(admin)/(shell)/security/emergency/[action]/page.tsx(7,21): error TS2307: Cannot find module '../../../../../packages/auth/permissions' or its corresponding type declarations.
+app/(admin)/(shell)/security/page.tsx(6,38): error TS2307: Cannot find module '../../../packages/auth/session' or its corresponding type declarations.
+app/(admin)/(shell)/security/page.tsx(7,21): error TS2307: Cannot find module '../../../packages/auth/permissions' or its corresponding type declarations.
+app/(admin)/(shell)/security/page.tsx(8,20): error TS2307: Cannot find module '../../../packages/db' or its corresponding type declarations.
+app/(admin)/(shell)/security/page.tsx(64,33): error TS7006: Parameter 'incident' implicitly has an 'any' type.
+app/(admin)/(shell)/security/page.tsx(97,34): error TS7006: Parameter 'event' implicitly has an 'any' type.
+app/(admin)/(shell)/users/page.tsx(5,38): error TS2307: Cannot find module '../../../../../packages/auth/session' or its corresponding type declarations.
+app/(admin)/(shell)/users/page.tsx(6,21): error TS2307: Cannot find module '../../../../../packages/auth/permissions' or its corresponding type declarations.
+app/(admin)/(shell)/users/page.tsx(7,20): error TS2307: Cannot find module '../../../../../packages/db' or its corresponding type declarations.
+app/(admin)/(shell)/users/page.tsx(56,25): error TS7006: Parameter 'u' implicitly has an 'any' type.
+app/(admin)/mfa/enroll/page.tsx(9,20): error TS2307: Cannot find module 'qrcode' or its corresponding type declarations.
+app/api/quotes/route.ts(45,13): error TS2339: Property 'ip' does not exist on type 'NextRequest'.
+components/QuoteBuilder.tsx(10,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+components/QuoteBuilder.tsx(20,23): error TS2304: Cannot find name 'QuoteBuyerDetails'.
+components/QuoteBuilder.tsx(43,3): error TS2686: 'React' refers to a UMD global, but the current file is a module. Consider adding an import instead.
+packages/auth/mfa.ts(5,26): error TS2307: Cannot find module 'otpauth' or its corresponding type declarations.
+packages/auth/password.ts(11,30): error TS2694: Namespace '"C:/Users/JohnDera/starlight/node_modules/argon2/argon2"' has no exported member 'Options'.
+packages/auth/password.ts(25,3): error TS2322: Type 'Buffer<ArrayBufferLike>' is not assignable to type 'string'.
+packages/jobs/queue.ts(36,7): error TS2322: Type 'T' is not assignable to type 'JsonNull | InputJsonValue'.
+  Type 'Record<string, unknown>' is not assignable to type 'JsonNull | InputJsonValue'.
+    Type 'Record<string, unknown>' is missing the following properties from type 'readonly (InputJsonValue | null)[]': length, concat, join, slice, and 26 more.
+      Type 'T' is not assignable to type 'InputJsonArray'.
+        Type 'Record<string, unknown>' is missing the following properties from type 'readonly (InputJsonValue | null)[]': length, concat, join, slice, and 26 more.
+packages/security/events.ts(41,9): error TS2322: Type 'Record<string, unknown> | undefined' is not assignable to type 'NullableJsonNullValueInput | InputJsonValue | undefined'.
+  Type 'Record<string, unknown>' is not assignable to type 'NullableJsonNullValueInput | InputJsonValue | undefined'.
+    Type 'Record<string, unknown>' is missing the following properties from type 'readonly (InputJsonValue | null)[]': length, concat, join, slice, and 26 more.
+packages/storage/r2.ts(11,8): error TS2307: Cannot find module '@aws-sdk/client-s3' or its corresponding type declarations.
+packages/storage/r2.ts(12,30): error TS2307: Cannot find module '@aws-sdk/s3-request-presigner' or its corresponding type declarations.
+proxy.ts(52,19): error TS2339: Property 'ip' does not exist on type 'NextRequest'.
+workers/file-scan-worker/index.ts(57,35): error TS2322: Type 'Buffer<ArrayBufferLike>' is not assignable to type 'BlobPart'.
+  Type 'Buffer<ArrayBufferLike>' is not assignable to type 'ArrayBufferView<ArrayBuffer>'.
+    Types of property 'buffer' are incompatible.
+      Type 'ArrayBufferLike' is not assignable to type 'ArrayBuffer'.
+        Type 'SharedArrayBuffer' is missing the following properties from type 'ArrayBuffer': resizable, resize, detached, transfer, transferToFixedLength

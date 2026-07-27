@@ -6,24 +6,32 @@ import type { Product } from "@/lib/types";
 import { ProductImagePlaceholder } from "./ProductImagePlaceholder";
 import { StatusBadge } from "./StatusBadge";
 
+export const MAX_COMPARE = 4;
+
 export function ProductCompareTray({
   products,
   onRemove,
   onClear,
   onOpen,
+  limitReached = false,
 }: {
   products: Product[];
   onRemove: (id: string) => void;
   onClear: () => void;
   onOpen: () => void;
+  limitReached?: boolean;
 }) {
   if (products.length === 0) return null;
 
   return (
     <div className="sticky bottom-0 z-30 border-t border-brand-border bg-brand-graphite/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-4 px-6 py-3">
-        <span className="font-mono-meta text-xs uppercase tracking-wider text-brand-steel-dim">
-          Compare ({products.length}/4)
+        <span
+          className={`font-mono-meta text-xs uppercase tracking-wider ${
+            limitReached ? "text-brand-amber" : "text-brand-steel-dim"
+          }`}
+        >
+          Compare ({products.length}/{MAX_COMPARE})
         </span>
         <div className="flex flex-1 flex-wrap items-center gap-2">
           {products.map((p) => (
@@ -60,6 +68,11 @@ export function ProductCompareTray({
             Compare Now
           </button>
         </div>
+        {limitReached && (
+          <p role="status" className="w-full text-xs text-brand-amber">
+            Compare is full ({MAX_COMPARE} max) — remove a product to add another.
+          </p>
+        )}
       </div>
     </div>
   );

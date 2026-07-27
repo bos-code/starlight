@@ -10,7 +10,7 @@ import { ProductCard } from "./ProductCard";
 import { ProductImagePlaceholder } from "./ProductImagePlaceholder";
 import { StatusBadge } from "./StatusBadge";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { ProductCompareModal, ProductCompareTray } from "./ProductCompare";
+import { MAX_COMPARE, ProductCompareModal, ProductCompareTray } from "./ProductCompare";
 import { SectionMarker } from "./brand/SectionMarker";
 import { useQuote } from "@/lib/quote-context";
 import { buildProductEnquiryUrl } from "@/lib/whatsapp";
@@ -24,8 +24,6 @@ const availabilityOptions: { value: AvailabilityStatus; label: string }[] = [
   { value: "out_of_stock", label: "Out of Stock" },
   { value: "price_on_request", label: "Confirm Availability" },
 ];
-
-const MAX_COMPARE = 4;
 
 function FilterGroup({
   title,
@@ -177,15 +175,24 @@ export function ProductsCatalog() {
   const [view, setView] = useState<ViewMode>("grid");
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [compareModalOpen, setCompareModalOpen] = useState(false);
+  const [compareLimitReached, setCompareLimitReached] = useState(false);
 
   function toggle<T>(list: T[], value: T, setList: (v: T[]) => void) {
     setList(list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
   }
 
   function toggleCompare(id: string) {
-    setCompareIds((prev) =>
-      prev.includes(id) ? prev.filter((c) => c !== id) : prev.length < MAX_COMPARE ? [...prev, id] : prev
-    );
+    if (compareIds.includes(id)) {
+      setCompareIds(compareIds.filter((c) => c !== id));
+      setCompareLimitReached(false);
+      return;
+    }
+    if (compareIds.length >= MAX_COMPARE) {
+      setCompareLimitReached(true);
+      return;
+    }
+    setCompareIds([...compareIds, id]);
+    setCompareLimitReached(false);
   }
 
   const filtered = useMemo(() => {
@@ -516,8 +523,15 @@ export function ProductsCatalog() {
 
       <ProductCompareTray
         products={compareProducts}
-        onRemove={(id) => setCompareIds((prev) => prev.filter((c) => c !== id))}
-        onClear={() => setCompareIds([])}
+        limitReached={compareLimitReached}
+        onRemove={(id) => {
+          setCompareIds((prev) => prev.filter((c) => c !== id));
+          setCompareLimitReached(false);
+        }}
+        onClear={() => {
+          setCompareIds([]);
+          setCompareLimitReached(false);
+        }}
         onOpen={() => setCompareModalOpen(true)}
       />
       {compareModalOpen && (

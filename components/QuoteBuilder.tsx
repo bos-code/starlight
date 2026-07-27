@@ -6,12 +6,16 @@ import { CheckCircle2, Minus, Plus, Trash2 } from "lucide-react";
 import { useQuote } from "@/lib/quote-context";
 import { getBrand, getCategory } from "@/lib/data";
 import { ProductImagePlaceholder } from "./ProductImagePlaceholder";
-import { WhatsAppIcon } from "./WhatsAppIcon";
-import { buildWhatsAppMessage, buildWhatsAppUrl, type QuoteBuyerDetails } from "@/lib/whatsapp";
-import { addStoredQuote } from "@/lib/quote-log";
 import type { BuyerType } from "@/lib/types";
+import { v4 as uuidv4 } from 'uuid';
 
-const buyerTypes: BuyerType[] = ["Retail Customer", "Contractor", "Dealer", "Wholesale Buyer"];
+const buyerTypes: { label: string; value: string }[] = [
+  { label: "Individual / Retail Customer", value: "INDIVIDUAL" },
+  { label: "Contractor", value: "CONTRACTOR" },
+  { label: "Dealer / Reseller", value: "DEALER" },
+  { label: "Company", value: "COMPANY" },
+  { label: "Procurement Team / Wholesale", value: "PROCUREMENT_TEAM" }
+];
 
 type FormState = Omit<QuoteBuyerDetails, "buyerType"> & { buyerType: BuyerType | "" };
 
@@ -31,6 +35,14 @@ export function QuoteBuilder() {
   const [form, setForm] = useState<FormState>(emptyForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [reference, setReference] = useState<string | null>(null);
+  const [idempotencyKey, setIdempotencyKey] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // Hydrate local data on mount and set idempotency key
+  React.useEffect(() => {
+    setIdempotencyKey(uuidv4());
+  }, []);
 
   const lineItems = useMemo(
     () =>
@@ -57,28 +69,50 @@ export function QuoteBuilder() {
     return Object.keys(next).length === 0;
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (lineItems.length === 0) return;
     if (!validate()) return;
+    
+    setIsSubmitting(true);
+    setSubmitError(null);
 
-    const buyer: QuoteBuyerDetails = { ...form, buyerType: form.buyerType as BuyerType };
-    const message = buildWhatsAppMessage(lineItems, buyer);
-    const url = buildWhatsAppUrl(message);
+    try {
+      const res = await fetch('/api/quotes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          idempotencyKey,
+          buyerType: form.buyerType,
+          contactName: form.fullName,
+          contactEmail: form.email,
+          contactPhone: form.phone,
+          businessName: form.companyName,
+          deliveryLocation: form.location,
+          requiredByDate: form.requiredDate ? new Date(form.requiredDate).toISOString() : undefined,
+          notes: form.notes,
+          items: lineItems.map((li) => ({
+            productId: li.product.id,
+            quantity: li.quantity,
+          })),
+        }),
+      });
 
-    const record = addStoredQuote({
-      buyer,
-      items: lineItems.map((li) => ({
-        productId: li.product.id,
-        productName: li.product.name,
-        quantity: li.quantity,
-      })),
-    });
+      const data = await res.json();
 
-    setReference(record.reference);
-    window.open(url, "_blank", "noopener,noreferrer");
-    clear();
-    setForm(emptyForm);
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to submit quote');
+      }
+
+      setReference(data.quoteReference);
+      clear();
+      setForm(emptyForm);
+      setIdempotencyKey(uuidv4()); // Reset key for next submission
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'An unknown error occurred');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (reference) {
@@ -90,8 +124,7 @@ export function QuoteBuilder() {
         </h1>
         <p className="mt-2 text-sm text-brand-steel">
           Reference <span className="font-mono-meta text-brand-white">{reference}</span> has been recorded.
-          WhatsApp should have opened in a new tab with your prepared message — send it to
-          reach the Starlite sales team.
+          Our sales team will review your request and contact you shortly.
         </p>
         <div className="mt-8 flex gap-3">
           <Link
@@ -198,6 +231,12 @@ export function QuoteBuilder() {
             Buyer Information
           </h2>
 
+          {submitError && (
+            <div className="rounded-lg bg-red-500/10 p-4 text-sm text-red-400">
+              {submitError}
+            </div>
+          )}
+
           <Field label="Full Name" required error={errors.fullName}>
             <input
               value={form.fullName}
@@ -243,8 +282,8 @@ export function QuoteBuilder() {
             >
               <option value="">Select buyer type</option>
               {buyerTypes.map((t) => (
-                <option key={t} value={t}>
-                  {t}
+                <option key={t.value} value={t.value}>
+                  {t.label}
                 </option>
               ))}
             </select>
@@ -280,11 +319,10 @@ export function QuoteBuilder() {
 
           <button
             type="submit"
-            disabled={lineItems.length === 0}
+            disabled={lineItems.length === 0 || isSubmitting}
             className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-orange py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
           >
-            <WhatsAppIcon className="h-4 w-4" />
-            Submit Quote Request
+            {isSubmitting ? 'Submitting...' : 'Submit Quote Request'}
           </button>
         </div>
       </form>
