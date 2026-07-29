@@ -2,8 +2,10 @@ import Link from "next/link";
 import {
   ArrowRight,
   BatteryCharging,
+  BriefcaseBusiness,
   Building2,
   ClipboardList,
+  Database,
   Flame,
   Hammer,
   MapPin,
@@ -11,6 +13,7 @@ import {
   Search,
   ShieldCheck,
   Truck,
+  Workflow,
   Wrench,
   Zap,
 } from "lucide-react";
@@ -250,6 +253,110 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* BUSINESS-SIDE PITCH — the catalogue creates demand; the desk creates continuity */}
+      <section className="relative overflow-hidden border-b border-brand-border bg-brand-navy">
+        <div className="technical-grid pointer-events-none absolute inset-0 opacity-60" />
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <SectionMarker index="05" label="More Than A Storefront" />
+            <h2 className="mt-3 max-w-xl font-heading text-4xl font-extrabold uppercase leading-[0.96] text-brand-white sm:text-5xl">
+              Built for buyers.
+              <br />
+              <span className="text-brand-orange">Built for the business.</span>
+            </h2>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-brand-steel">
+              The request should not disappear into a chat. Each submitted list becomes a
+              structured reference that sales can see, follow up and move toward a quote —
+              the first working layer of a complete digital trade operation.
+            </p>
+            <div className="mt-6 space-y-3">
+              {[
+                "Capture buyer type, products, quantities and location",
+                "Keep every request visible in one follow-up pipeline",
+                "Grow into stock, payment, delivery and after-sales",
+              ].map((point) => (
+                <p key={point} className="flex items-center gap-3 text-sm text-brand-steel">
+                  <span className="h-1.5 w-1.5 shrink-0 bg-brand-orange" />
+                  {point}
+                </p>
+              ))}
+            </div>
+            <Link
+              href="/business"
+              className="mt-8 inline-flex items-center gap-2 bg-brand-orange px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
+            >
+              Preview the Business Desk
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="border border-brand-border bg-brand-graphite/90 shadow-2xl shadow-black/30">
+            <div className="flex items-center justify-between border-b border-brand-border px-5 py-3">
+              <span className="font-mono-meta text-[9px] uppercase tracking-[0.16em] text-brand-steel">
+                STL / Customer-to-Operations Loop
+              </span>
+              <span className="font-mono-meta text-[8px] uppercase tracking-[0.14em] text-brand-green">
+                V1 Connected
+              </span>
+            </div>
+            <div className="grid gap-px bg-brand-border sm:grid-cols-3">
+              {[
+                {
+                  icon: Database,
+                  index: "01",
+                  title: "Catalogue",
+                  detail: `${products.length} product records`,
+                },
+                {
+                  icon: ClipboardList,
+                  index: "02",
+                  title: "Enquiry",
+                  detail: "Buyer + product context",
+                },
+                {
+                  icon: BriefcaseBusiness,
+                  index: "03",
+                  title: "Business Desk",
+                  detail: "Status + follow-up",
+                },
+              ].map(({ icon: Icon, index, title, detail }) => (
+                <div key={index} className="relative min-h-48 bg-brand-surface p-5">
+                  <div className="flex items-start justify-between">
+                    <span className="flex h-9 w-9 items-center justify-center border border-brand-orange/40 bg-brand-graphite">
+                      <Icon className="h-4 w-4 text-brand-orange" strokeWidth={1.5} />
+                    </span>
+                    <span className="font-mono-meta text-[9px] text-brand-steel-dim">
+                      {index}
+                    </span>
+                  </div>
+                  <h3 className="mt-9 font-heading text-lg font-bold uppercase text-brand-white">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-brand-steel-dim">
+                    {detail}
+                  </p>
+                  {index !== "03" && (
+                    <ArrowRight className="absolute -right-3 top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 text-brand-orange sm:block" />
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col justify-between gap-3 border-t border-brand-border bg-brand-navy/45 px-5 py-4 sm:flex-row sm:items-center">
+              <p className="flex items-center gap-2 font-mono-meta text-[8px] uppercase tracking-[0.13em] text-brand-steel-dim">
+                <Workflow className="h-3.5 w-3.5 text-brand-orange" />
+                Production layer: stock / payment / delivery / service
+              </p>
+              <Link
+                href="/business#full-product"
+                className="font-mono-meta text-[9px] uppercase tracking-[0.13em] text-brand-orange hover:text-brand-white"
+              >
+                View roadmap →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* TRUST BADGES */}
       <section className="border-b border-brand-border bg-brand-graphite-light">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px border-x border-brand-border bg-brand-border sm:grid-cols-4">
@@ -269,7 +376,7 @@ export default function HomePage() {
       <section className="technical-grid border-b border-brand-border bg-brand-graphite">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 lg:grid-cols-2">
           <div>
-            <SectionMarker index="05" label="About Starlite Tools" />
+            <SectionMarker index="06" label="About Starlite Tools" />
             <h2 className="mt-2 max-w-xl font-heading text-4xl font-extrabold uppercase leading-[0.98] text-brand-white">
               Built in the market. Ready for the next scale.
             </h2>

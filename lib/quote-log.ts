@@ -53,3 +53,14 @@ export function addStoredQuote(quote: Omit<StoredQuote, "id" | "reference" | "cr
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify([record, ...existing]));
   return record;
 }
+
+export function updateStoredQuoteStatus(
+  quoteId: string,
+  status: QuoteStatus
+): StoredQuote[] {
+  const updated = getStoredQuotes().map((quote) =>
+    quote.id === quoteId ? { ...quote, status } : quote
+  );
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+  return updated;
+}
