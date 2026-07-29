@@ -12,9 +12,9 @@ import { businessSettings } from "@/config/business";
 
 const navLinks = [
   { href: "/products", label: "Products" },
+  { href: "/products?brand=all", label: "Brands" },
   { href: "/#industries", label: "Industries" },
-  { href: "/dealer", label: "Dealer Portal" },
-  { href: "/business", label: "Business Desk" },
+  { href: "/dealer", label: "Dealers" },
   { href: "/about#support", label: "Support" },
   { href: "/about", label: "About" },
 ];

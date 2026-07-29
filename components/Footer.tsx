@@ -53,7 +53,6 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5 text-sm text-brand-steel">
             <li><Link href="/about" className="hover:text-brand-orange">About Starlite</Link></li>
             <li><Link href="/dealer" className="hover:text-brand-orange">Dealer Portal</Link></li>
-            <li><Link href="/business" className="hover:text-brand-orange">Business Desk Preview</Link></li>
             <li><Link href="/products" className="hover:text-brand-orange">Full Catalogue</Link></li>
             <li><Link href="/quote" className="hover:text-brand-orange">Quote List</Link></li>
           </ul>

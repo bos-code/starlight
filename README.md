@@ -9,7 +9,6 @@ A responsive industrial product catalogue and quote-request experience for Starl
 - Product search, category and brand filters, availability filters, sorting, and comparison
 - Focused homepage journey that keeps the complete range inside the catalogue
 - Persistent quote list with a request-received confirmation and optional WhatsApp handoff
-- Business Desk preview with a device-local enquiry inbox and editable sales statuses
 - Local quote-history dashboard for dealer follow-up
 - Branded Onitsha location panel with an external directions handoff
 - Responsive home, catalogue, product, quote, dealer, about, and contact experiences
@@ -57,10 +56,6 @@ public/images/tools/    Generated transparent tool visuals
 ## Catalogue and quote data
 
 Catalogue records currently live in `lib/ingco-catalogue.ts` and `lib/data.ts`. Quote selections and submitted quote history are stored locally in the browser. The pitch flow acknowledges the request first, then lets the buyer send a prepared copy through WhatsApp.
-
-The `/business` route demonstrates the customer-to-sales handoff with real V1
-catalogue/request data, then separates working features from the proposed full-product
-operations layer.
 
 ## Pitch-stage scope
 
