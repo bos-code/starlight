@@ -2,11 +2,12 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { CheckCircle2, Minus, Plus, Trash2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageSquareText, Minus, Plus, Trash2 } from "lucide-react";
 import { useQuote } from "@/lib/quote-context";
 import { getBrand, getCategory } from "@/lib/data";
 import { ProductVisual } from "./ProductVisual";
 import { WhatsAppIcon } from "./WhatsAppIcon";
+import { SectionMarker } from "./brand/SectionMarker";
 import { buildWhatsAppMessage, buildWhatsAppUrl, type QuoteBuyerDetails } from "@/lib/whatsapp";
 import { addStoredQuote } from "@/lib/quote-log";
 import type { BuyerType } from "@/lib/types";
@@ -14,6 +15,7 @@ import type { BuyerType } from "@/lib/types";
 const buyerTypes: BuyerType[] = ["Retail Customer", "Contractor", "Dealer", "Wholesale Buyer"];
 
 type FormState = Omit<QuoteBuyerDetails, "buyerType"> & { buyerType: BuyerType | "" };
+type Confirmation = { reference: string; whatsappUrl: string };
 
 const emptyForm: FormState = {
   fullName: "",
@@ -30,7 +32,7 @@ export function QuoteBuilder() {
   const { items, itemCount, removeItem, updateQuantity, clear, getProduct } = useQuote();
   const [form, setForm] = useState<FormState>(emptyForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
-  const [reference, setReference] = useState<string | null>(null);
+  const [confirmation, setConfirmation] = useState<Confirmation | null>(null);
 
   const lineItems = useMemo(
     () =>
@@ -75,38 +77,87 @@ export function QuoteBuilder() {
       })),
     });
 
-    setReference(record.reference);
-    window.open(url, "_blank", "noopener,noreferrer");
+    setConfirmation({ reference: record.reference, whatsappUrl: url });
     clear();
     setForm(emptyForm);
   }
 
-  if (reference) {
+  if (confirmation) {
     return (
-      <div className="mx-auto flex max-w-xl flex-col items-center px-6 py-24 text-center">
-        <CheckCircle2 className="h-14 w-14 text-emerald-400" />
-        <h1 className="mt-5 font-heading text-2xl font-bold text-brand-white">
-          Quote request saved
-        </h1>
-        <p className="mt-2 text-sm text-brand-steel">
-          Reference <span className="font-mono-meta text-brand-white">{reference}</span> has been recorded.
-          WhatsApp should have opened in a new tab with your prepared message — send it to
-          reach the Starlite sales team.
-        </p>
-        <div className="mt-8 flex gap-3">
-          <Link
-            href="/products"
-            className="border border-brand-border px-5 py-3 text-sm font-semibold text-brand-white hover:border-brand-white"
-          >
-            Continue Browsing
-          </Link>
-          <button
-            type="button"
-            onClick={() => setReference(null)}
-            className="bg-brand-orange px-5 py-3 text-sm font-bold uppercase tracking-wide text-brand-graphite hover:brightness-110"
-          >
-            Start New Quote
-          </button>
+      <div className="mx-auto max-w-5xl px-6 py-16 sm:py-24">
+        <div className="relative overflow-hidden border border-brand-border bg-brand-surface">
+          <div className="technical-grid pointer-events-none absolute inset-0 opacity-45" />
+          <div className="relative grid lg:grid-cols-[1.08fr_0.92fr]">
+            <div className="border-b border-brand-border p-8 sm:p-12 lg:border-b-0 lg:border-r">
+              <SectionMarker index="Request / Complete" label="Enquiry Received" />
+              <span className="mt-10 flex h-16 w-16 items-center justify-center border border-emerald-400/50 bg-emerald-400/10">
+                <CheckCircle2 className="h-8 w-8 text-emerald-400" />
+              </span>
+              <h1 className="mt-7 max-w-2xl font-heading text-4xl font-extrabold uppercase leading-[0.96] text-brand-white sm:text-5xl">
+                Thank you.
+                <br />
+                <span className="text-brand-orange">We received your request.</span>
+              </h1>
+              <p className="mt-5 max-w-xl text-sm leading-relaxed text-brand-steel">
+                Reference{" "}
+                <span className="font-mono-meta font-semibold text-brand-white">
+                  {confirmation.reference}
+                </span>{" "}
+                has been recorded. The sales team will review the products and continue
+                the conversation with pricing and availability.
+              </p>
+            </div>
+
+            <div className="flex flex-col justify-between bg-brand-graphite/80 p-8 sm:p-10">
+              <div>
+                <p className="font-mono-meta text-[9px] uppercase tracking-[0.16em] text-brand-orange">
+                  What happens next
+                </p>
+                <div className="mt-5 divide-y divide-brand-border border-y border-brand-border">
+                  {[
+                    ["01", "Request received", "Your selected products and contact details are recorded."],
+                    ["02", "Sales review", "Starlite confirms stock, pricing and delivery details."],
+                    ["03", "WhatsApp follow-up", "The conversation continues directly with the buyer."],
+                  ].map(([index, title, description]) => (
+                    <div key={index} className="grid grid-cols-[2.5rem_1fr] gap-3 py-4">
+                      <span className="font-mono-meta text-[10px] text-brand-orange">{index}</span>
+                      <div>
+                        <p className="font-heading text-base font-bold uppercase text-brand-white">
+                          {title}
+                        </p>
+                        <p className="mt-1 text-xs leading-relaxed text-brand-steel-dim">
+                          {description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-5 text-xs leading-relaxed text-brand-steel-dim">
+                  In the production phase, the buyer and sales team can receive automatic
+                  WhatsApp or email confirmations at this point.
+                </p>
+              </div>
+
+              <div className="mt-8 grid gap-3">
+                <Link
+                  href="/"
+                  className="flex items-center justify-center gap-2 bg-brand-orange px-5 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
+                >
+                  Back to Homepage
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <a
+                  href={confirmation.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 border border-brand-border bg-brand-surface px-5 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-white transition hover:border-emerald-400 hover:text-emerald-400"
+                >
+                  <WhatsAppIcon className="h-4 w-4" />
+                  Send Copy on WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -122,8 +173,9 @@ export function QuoteBuilder() {
           Quote List
         </h1>
         <p className="mt-2 text-sm text-brand-steel">
-          {itemCount} item{itemCount === 1 ? "" : "s"} selected. This is not an online payment
-          checkout — submitting sends a structured request to our WhatsApp sales line.
+          {itemCount} item{itemCount === 1 ? "" : "s"} selected. This pitch collects a
+          structured enquiry only — pricing, availability and payment are confirmed later
+          by the sales team.
         </p>
       </div>
 
@@ -285,8 +337,8 @@ export function QuoteBuilder() {
             disabled={lineItems.length === 0}
             className="flex w-full items-center justify-center gap-2 bg-brand-orange py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
           >
-            <WhatsAppIcon className="h-4 w-4" />
-            Submit Quote Request
+            <MessageSquareText className="h-4 w-4" />
+            Submit Request
           </button>
         </div>
       </form>

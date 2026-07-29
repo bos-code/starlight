@@ -3,9 +3,12 @@ import {
   ArrowRight,
   BatteryCharging,
   Building2,
+  ClipboardList,
   Flame,
   Hammer,
   MapPin,
+  MessagesSquare,
+  Search,
   ShieldCheck,
   Truck,
   Wrench,
@@ -13,7 +16,6 @@ import {
 } from "lucide-react";
 import { industries, products } from "@/lib/data";
 import { businessSettings } from "@/config/business";
-import { ProductCard } from "@/components/ProductCard";
 import { ProductVisual } from "@/components/ProductVisual";
 import { DualBrandHero } from "@/components/home/dual-brand-hero";
 import { ContactMap } from "@/components/ContactMap";
@@ -40,7 +42,27 @@ const trustPoints = [
   { icon: MapPin, title: "Nationwide Reach", subtitle: "Fast Delivery" },
 ];
 
-const featuredProducts = products.filter((p) => p.isFeatured).slice(0, 8);
+const pitchSteps = [
+  {
+    icon: Search,
+    index: "01",
+    title: "Explore the range",
+    description: "Find the right category, product family and key specifications without a long sales call.",
+  },
+  {
+    icon: ClipboardList,
+    index: "02",
+    title: "Build one request",
+    description: "Add several tools to one clear enquiry instead of sending scattered screenshots and messages.",
+  },
+  {
+    icon: MessagesSquare,
+    index: "03",
+    title: "Continue with sales",
+    description: "Starlite confirms availability, pricing and the next step directly through WhatsApp.",
+  },
+];
+
 const p20sProduct =
   products.find((product) => product.id === "ingco-CKLI2010") ??
   products.find((product) => product.id === "ingco-CDLI20012");
@@ -167,26 +189,62 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS */}
-      <section className="border-b border-brand-border bg-brand-graphite">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 flex items-end justify-between">
-            <div>
-              <SectionMarker index="04" label="Top Sellers" />
-              <h2 className="mt-2 font-heading text-2xl font-bold uppercase text-brand-white sm:text-3xl">
-                Featured Products
-              </h2>
+      {/* PITCH JOURNEY — keeps the homepage focused while the catalogue carries the products */}
+      <section className="technical-grid border-b border-brand-border bg-brand-graphite">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+          <div>
+            <SectionMarker index="04" label="Simple By Design" />
+            <h2 className="mt-3 max-w-lg font-heading text-4xl font-extrabold uppercase leading-[0.96] text-brand-white">
+              From catalogue
+              <br />
+              <span className="text-brand-orange">to conversation.</span>
+            </h2>
+            <p className="mt-5 max-w-lg text-sm leading-relaxed text-brand-steel">
+              The homepage introduces the business and the buying path. The full product
+              range stays where it belongs — inside the searchable catalogue.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 bg-brand-orange px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
+              >
+                Open Catalogue
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/quote"
+                className="inline-flex items-center gap-2 border border-brand-border bg-brand-surface px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-white transition hover:border-brand-orange"
+              >
+                Build a Request
+              </Link>
             </div>
-            <Link
-              href="/products"
-              className="hidden items-center gap-1.5 text-sm font-semibold text-brand-steel hover:text-brand-orange sm:flex"
-            >
-              View full catalogue <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+
+          <div className="grid gap-px border border-brand-border bg-brand-border md:grid-cols-3">
+            {pitchSteps.map(({ icon: Icon, index, title, description }) => (
+              <article
+                key={index}
+                className="relative min-h-64 overflow-hidden bg-brand-surface p-6"
+              >
+                <span className="absolute right-4 top-3 font-heading text-7xl font-extrabold leading-none text-white/[0.025]">
+                  {index}
+                </span>
+                <div className="flex items-center justify-between">
+                  <span className="flex h-10 w-10 items-center justify-center border border-brand-orange/50 bg-brand-graphite">
+                    <Icon className="h-5 w-5 text-brand-orange" strokeWidth={1.5} />
+                  </span>
+                  <span className="font-mono-meta text-[9px] uppercase tracking-[0.18em] text-brand-orange">
+                    Step / {index}
+                  </span>
+                </div>
+                <h3 className="mt-12 font-heading text-xl font-bold uppercase text-brand-white">
+                  {title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-brand-steel">
+                  {description}
+                </p>
+                <div className="absolute inset-x-6 bottom-5 h-px bg-gradient-to-r from-brand-orange/70 to-transparent" />
+              </article>
             ))}
           </div>
         </div>
