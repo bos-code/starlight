@@ -67,10 +67,10 @@ export function DealerDashboard() {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[220px_1fr]">
-        <aside className="h-fit space-y-1 rounded-xl border border-brand-border bg-brand-surface p-3">
+        <aside className="h-fit space-y-1 border border-brand-border bg-brand-surface p-3">
           {sidebarLinks.map((link) => {
             const Icon = link.icon;
-            const className = `flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+            const className = `flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium transition ${
               link.active
                 ? "bg-brand-orange/10 text-brand-orange"
                 : "text-brand-steel hover:bg-brand-graphite hover:text-brand-white"
@@ -94,7 +94,7 @@ export function DealerDashboard() {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-xl border border-brand-border bg-brand-surface p-5"
+                className="border border-brand-border bg-brand-surface p-5"
               >
                 <p className="font-heading text-3xl font-extrabold text-brand-white">
                   {stat.value}
@@ -109,7 +109,7 @@ export function DealerDashboard() {
           <div className="mb-8 grid gap-4 sm:grid-cols-2">
             <Link
               href="/products"
-              className="flex items-center gap-3 rounded-xl border border-brand-border bg-brand-surface p-4 transition hover:border-brand-orange/50"
+              className="flex items-center gap-3 border border-brand-border bg-brand-surface p-4 transition hover:border-brand-orange/50"
             >
               <Package className="h-5 w-5 text-brand-orange" />
               <div>
@@ -121,7 +121,7 @@ export function DealerDashboard() {
               href={`https://wa.me/${businessSettings.whatsappNumber}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-xl border border-brand-border bg-brand-surface p-4 transition hover:border-brand-orange/50"
+              className="flex items-center gap-3 border border-brand-border bg-brand-surface p-4 transition hover:border-brand-orange/50"
             >
               <Download className="h-5 w-5 text-brand-orange" />
               <div>
@@ -131,7 +131,7 @@ export function DealerDashboard() {
             </a>
           </div>
 
-          <div className="rounded-xl border border-brand-border bg-brand-surface">
+          <div className="border border-brand-border bg-brand-surface">
             <div className="border-b border-brand-border px-5 py-4">
               <h2 className="font-heading text-lg font-bold uppercase text-brand-white">
                 Recent Activity

@@ -3,11 +3,11 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { LayoutGrid, List } from "lucide-react";
+import { LayoutGrid, List, SlidersHorizontal } from "lucide-react";
 import { brands, categories, getBrand, getCategory, industries, products } from "@/lib/data";
 import type { AvailabilityStatus, Product } from "@/lib/types";
 import { ProductCard } from "./ProductCard";
-import { ProductImagePlaceholder } from "./ProductImagePlaceholder";
+import { ProductVisual } from "./ProductVisual";
 import { StatusBadge } from "./StatusBadge";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { ProductCompareModal, ProductCompareTray } from "./ProductCompare";
@@ -88,12 +88,14 @@ function ProductListRow({
   const displaySpecs = product.specs.filter((s) => s.label !== "Feature").slice(0, 3);
 
   return (
-    <div className="flex flex-col gap-4 rounded-xl border border-brand-border bg-brand-surface p-4 sm:flex-row sm:items-center">
+    <div className="flex flex-col gap-4 border border-brand-border bg-brand-surface p-4 transition hover:border-brand-orange/45 sm:flex-row sm:items-center">
       <Link href={`/products/${product.slug}`} className="shrink-0">
-        <ProductImagePlaceholder
+        <ProductVisual
+          product={product}
           categorySlug={category?.slug ?? ""}
-          className="h-24 w-24 rounded-lg"
-          iconClassName="h-8 w-8"
+          categoryName={category?.name}
+          className="h-24 w-24 border border-brand-border"
+          sizes="96px"
         />
       </Link>
 
@@ -131,7 +133,7 @@ function ProductListRow({
           href={buildProductEnquiryUrl(product)}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-brand-border text-brand-steel hover:text-emerald-400"
+          className="flex h-10 w-10 items-center justify-center border border-brand-border text-brand-steel hover:border-emerald-400 hover:text-emerald-400"
           aria-label={`Ask about ${product.name} on WhatsApp`}
         >
           <WhatsAppIcon className="h-4 w-4" />
@@ -139,7 +141,7 @@ function ProductListRow({
         <button
           type="button"
           onClick={() => addItem(product.id)}
-          className="rounded-lg border border-brand-orange px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-brand-orange transition hover:bg-brand-orange hover:text-brand-graphite"
+          className="border border-brand-orange px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-brand-orange transition hover:bg-brand-orange hover:text-brand-graphite"
         >
           Add to Quote
         </button>
@@ -177,6 +179,7 @@ export function ProductsCatalog() {
   const [view, setView] = useState<ViewMode>("grid");
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [compareModalOpen, setCompareModalOpen] = useState(false);
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   function toggle<T>(list: T[], value: T, setList: (v: T[]) => void) {
     setList(list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
@@ -333,12 +336,12 @@ export function ProductsCatalog() {
           </h1>
         </div>
 
-        <div className="flex items-center gap-1 rounded-lg border border-brand-border p-1">
+        <div className="flex items-center gap-1 border border-brand-border p-1">
           <button
             type="button"
             onClick={() => setView("grid")}
             aria-label="Grid view"
-            className={`flex h-8 w-8 items-center justify-center rounded-md transition ${
+            className={`flex h-8 w-8 items-center justify-center transition ${
               view === "grid" ? "bg-brand-orange text-brand-graphite" : "text-brand-steel hover:text-brand-white"
             }`}
           >
@@ -348,7 +351,7 @@ export function ProductsCatalog() {
             type="button"
             onClick={() => setView("list")}
             aria-label="List view"
-            className={`flex h-8 w-8 items-center justify-center rounded-md transition ${
+            className={`flex h-8 w-8 items-center justify-center transition ${
               view === "list" ? "bg-brand-orange text-brand-graphite" : "text-brand-steel hover:text-brand-white"
             }`}
           >
@@ -358,91 +361,114 @@ export function ProductsCatalog() {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[260px_1fr]">
-        <aside className="h-fit rounded-xl border border-brand-border bg-brand-surface p-5 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-brand-white">
-              Filter Products
-            </h2>
-            <button
-              type="button"
-              onClick={clearAll}
-              className="text-xs font-semibold text-brand-orange hover:underline"
-            >
-              Clear all
-            </button>
+        <aside className="h-fit border border-brand-border bg-brand-surface lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+          <button
+            type="button"
+            onClick={() => setMobileFiltersOpen((open) => !open)}
+            aria-expanded={mobileFiltersOpen}
+            className="flex w-full items-center justify-between gap-3 p-4 lg:hidden"
+          >
+            <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-white">
+              <SlidersHorizontal className="h-4 w-4 text-brand-orange" />
+              Filter products
+            </span>
+            <span className="font-mono-meta text-[9px] uppercase tracking-[0.12em] text-brand-steel-dim">
+              {activeFilterChips.length > 0
+                ? `${activeFilterChips.length} active`
+                : `${filtered.length} results`}
+            </span>
+          </button>
+
+          <div
+            className={`border-t border-brand-border p-5 lg:block lg:border-t-0 ${
+              mobileFiltersOpen ? "block" : "hidden"
+            }`}
+          >
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-brand-white">
+                Filter Products
+              </h2>
+              <button
+                type="button"
+                onClick={clearAll}
+                className="text-xs font-semibold text-brand-orange hover:underline"
+              >
+                Clear all
+              </button>
+            </div>
+
+            <FilterGroup title="Categories">
+              {categoryFacets.map((c) => (
+                <CheckboxRow
+                  key={c.id}
+                  label={c.name}
+                  count={c.count}
+                  checked={selectedCategories.includes(c.id)}
+                  onChange={() => toggle(selectedCategories, c.id, setSelectedCategories)}
+                />
+              ))}
+            </FilterGroup>
+
+            <FilterGroup title="Brand">
+              {brandFacets.map((b) => (
+                <CheckboxRow
+                  key={b.id}
+                  label={b.name}
+                  count={b.count}
+                  checked={selectedBrands.includes(b.id)}
+                  onChange={() => toggle(selectedBrands, b.id, setSelectedBrands)}
+                />
+              ))}
+            </FilterGroup>
+
+            <FilterGroup title="Product Type" defaultOpen={false}>
+              {productTypeFacets.map((t) => (
+                <CheckboxRow
+                  key={t.value}
+                  label={t.value}
+                  count={t.count}
+                  checked={selectedProductTypes.includes(t.value)}
+                  onChange={() => toggle(selectedProductTypes, t.value, setSelectedProductTypes)}
+                />
+              ))}
+            </FilterGroup>
+
+            <FilterGroup title="Power Source">
+              {powerSourceFacets.map((p) => (
+                <CheckboxRow
+                  key={p.value}
+                  label={p.value}
+                  count={p.count}
+                  checked={selectedPowerSources.includes(p.value)}
+                  onChange={() => toggle(selectedPowerSources, p.value, setSelectedPowerSources)}
+                />
+              ))}
+            </FilterGroup>
+
+            <FilterGroup title="Voltage">
+              {voltageFacets.map((v) => (
+                <CheckboxRow
+                  key={v.value}
+                  label={v.value}
+                  count={v.count}
+                  checked={selectedVoltages.includes(v.value)}
+                  onChange={() => toggle(selectedVoltages, v.value, setSelectedVoltages)}
+                />
+              ))}
+            </FilterGroup>
+
+            <FilterGroup title="Availability">
+              {availabilityOptions.map((o) => (
+                <CheckboxRow
+                  key={o.value}
+                  label={o.label}
+                  count={products.filter((p) => p.availabilityStatus === o.value).length}
+                  checked={selectedAvailability.includes(o.value)}
+                  onChange={() => toggle(selectedAvailability, o.value, setSelectedAvailability)}
+                />
+              ))}
+            </FilterGroup>
           </div>
-
-          <FilterGroup title="Categories">
-            {categoryFacets.map((c) => (
-              <CheckboxRow
-                key={c.id}
-                label={c.name}
-                count={c.count}
-                checked={selectedCategories.includes(c.id)}
-                onChange={() => toggle(selectedCategories, c.id, setSelectedCategories)}
-              />
-            ))}
-          </FilterGroup>
-
-          <FilterGroup title="Brand">
-            {brandFacets.map((b) => (
-              <CheckboxRow
-                key={b.id}
-                label={b.name}
-                count={b.count}
-                checked={selectedBrands.includes(b.id)}
-                onChange={() => toggle(selectedBrands, b.id, setSelectedBrands)}
-              />
-            ))}
-          </FilterGroup>
-
-          <FilterGroup title="Product Type" defaultOpen={false}>
-            {productTypeFacets.map((t) => (
-              <CheckboxRow
-                key={t.value}
-                label={t.value}
-                count={t.count}
-                checked={selectedProductTypes.includes(t.value)}
-                onChange={() => toggle(selectedProductTypes, t.value, setSelectedProductTypes)}
-              />
-            ))}
-          </FilterGroup>
-
-          <FilterGroup title="Power Source">
-            {powerSourceFacets.map((p) => (
-              <CheckboxRow
-                key={p.value}
-                label={p.value}
-                count={p.count}
-                checked={selectedPowerSources.includes(p.value)}
-                onChange={() => toggle(selectedPowerSources, p.value, setSelectedPowerSources)}
-              />
-            ))}
-          </FilterGroup>
-
-          <FilterGroup title="Voltage">
-            {voltageFacets.map((v) => (
-              <CheckboxRow
-                key={v.value}
-                label={v.value}
-                count={v.count}
-                checked={selectedVoltages.includes(v.value)}
-                onChange={() => toggle(selectedVoltages, v.value, setSelectedVoltages)}
-              />
-            ))}
-          </FilterGroup>
-
-          <FilterGroup title="Availability">
-            {availabilityOptions.map((o) => (
-              <CheckboxRow
-                key={o.value}
-                label={o.label}
-                count={products.filter((p) => p.availabilityStatus === o.value).length}
-                checked={selectedAvailability.includes(o.value)}
-                onChange={() => toggle(selectedAvailability, o.value, setSelectedAvailability)}
-              />
-            ))}
-          </FilterGroup>
         </aside>
 
         <div>
@@ -452,14 +478,14 @@ export function ProductsCatalog() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search product, brand, model, SKU..."
-              className="w-full rounded-lg border border-brand-border bg-brand-surface px-3.5 py-2.5 text-sm text-brand-white placeholder:text-brand-steel-dim focus:border-brand-orange focus:outline-none sm:max-w-xs"
+              className="w-full border border-brand-border bg-brand-surface px-3.5 py-2.5 text-sm text-brand-white placeholder:text-brand-steel-dim focus:border-brand-orange focus:outline-none sm:max-w-xs"
             />
             <label className="flex items-center gap-2 text-sm text-brand-steel">
               Sort by
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value as SortKey)}
-                className="rounded-lg border border-brand-border bg-brand-surface px-3 py-2.5 text-sm text-brand-white focus:border-brand-orange focus:outline-none"
+                className="border border-brand-border bg-brand-surface px-3 py-2.5 text-sm text-brand-white focus:border-brand-orange focus:outline-none"
               >
                 <option value="featured">Featured</option>
                 <option value="name-asc">Name: A to Z</option>
@@ -485,7 +511,7 @@ export function ProductsCatalog() {
           )}
 
           {filtered.length === 0 ? (
-            <div className="rounded-xl border border-dashed border-brand-border py-20 text-center text-brand-steel">
+            <div className="border border-dashed border-brand-border py-20 text-center text-brand-steel">
               No products match these filters yet.
             </div>
           ) : view === "grid" ? (

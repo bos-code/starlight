@@ -54,7 +54,7 @@ export function ContactMap() {
               href={`https://wa.me/${businessSettings.whatsappNumber}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-brand-orange px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
+              className="inline-flex items-center gap-2 bg-brand-orange px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Chat on WhatsApp
@@ -63,13 +63,13 @@ export function ContactMap() {
               href={buildDirectionsUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-brand-border px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-white transition hover:border-brand-white"
+              className="inline-flex items-center gap-2 border border-brand-border px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-white transition hover:border-brand-white"
             >
               Get Directions
             </a>
             <a
               href={`mailto:${businessSettings.email}`}
-              className="inline-flex items-center gap-2 rounded-lg border border-brand-border px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-white transition hover:border-brand-white"
+              className="inline-flex items-center gap-2 border border-brand-border px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-white transition hover:border-brand-white"
             >
               Email Sales
             </a>
@@ -77,7 +77,7 @@ export function ContactMap() {
         </div>
 
         <div>
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-brand-border sm:aspect-[16/11]">
+          <div className="relative aspect-[4/3] w-full overflow-hidden border border-brand-border sm:aspect-[16/11]">
             <iframe
               title={`Map — ${businessSettings.businessName}, ${businessSettings.city}`}
               src={buildMapEmbedUrl()}
@@ -92,7 +92,7 @@ export function ContactMap() {
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-full"
             >
               <span className="flex flex-col items-center gap-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-brand-graphite bg-brand-orange">
+                <span className="flex h-9 w-9 items-center justify-center border-2 border-brand-graphite bg-brand-orange">
                   <StarMark className="h-4 w-4 text-brand-graphite" />
                 </span>
                 <span className="h-2 w-2 rotate-45 bg-brand-orange" />

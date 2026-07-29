@@ -59,7 +59,7 @@ export function ProductTabs({ product }: { product: Product }) {
                 <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-brand-orange">
                   {group.title}
                 </h3>
-                <div className="divide-y divide-brand-border rounded-lg border border-brand-border">
+                <div className="divide-y divide-brand-border border border-brand-border">
                   {group.specs.map((spec) => (
                     <div key={spec.label} className="flex justify-between px-4 py-3 text-sm">
                       <span className="text-brand-steel-dim">{spec.label}</span>

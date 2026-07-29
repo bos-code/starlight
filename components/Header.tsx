@@ -25,14 +25,14 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-brand-border bg-brand-graphite/95 backdrop-blur">
-      <div className="hidden border-b border-brand-border/70 bg-brand-navy/60 text-[11px] text-brand-steel md:block">
+    <header className="sticky top-0 z-40 border-b border-brand-border bg-brand-graphite/95 backdrop-blur-xl">
+      <div className="hidden border-b border-brand-border/70 bg-brand-navy/75 text-brand-steel md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-1.5">
-          <span className="font-mono-meta flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
-            STL SYS: ONLINE &nbsp;·&nbsp; {businessSettings.address}, {businessSettings.state}, NG
+          <span className="font-mono-meta flex items-center gap-1.5 text-[9px] uppercase tracking-[0.14em]">
+            <span className="h-1.5 w-1.5 bg-brand-green shadow-[0_0_8px_rgba(34,197,94,0.55)]" />
+            STL_SYS: ONLINE &nbsp;·&nbsp; {businessSettings.address}, {businessSettings.state}, NG
           </span>
-          <span className="font-mono-meta">{businessSettings.hours}</span>
+          <span className="font-mono-meta text-[9px] uppercase tracking-[0.12em]">{businessSettings.hours}</span>
         </div>
       </div>
 
@@ -41,15 +41,15 @@ export function Header() {
           <Logo />
         </Link>
 
-        <nav className="hidden flex-1 items-center gap-6 lg:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-5 lg:flex">
           {navLinks.map((link) => {
             const isActive = link.href === pathname || (link.href !== "/" && pathname.startsWith(link.href.split("?")[0].split("#")[0]) && link.href.split("?")[0].split("#")[0] !== "/");
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className={`flex items-center gap-1.5 text-sm font-medium transition ${
-                  isActive ? "text-brand-white" : "text-brand-steel hover:text-brand-white"
+                className={`relative flex items-center gap-1.5 py-2 font-heading text-[13px] font-semibold uppercase tracking-[0.04em] transition ${
+                  isActive ? "text-brand-white after:absolute after:inset-x-0 after:-bottom-3 after:h-px after:bg-brand-orange" : "text-brand-steel hover:text-brand-white"
                 }`}
               >
                 {isActive && <StarMark className="h-2.5 w-2.5 text-brand-orange" />}
@@ -59,7 +59,7 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden flex-1 items-center rounded-lg border border-brand-border bg-brand-surface px-3 py-2 md:flex lg:max-w-xs">
+        <div className="hidden flex-1 items-center border border-brand-border bg-brand-surface px-3 py-2 md:flex lg:max-w-[280px]">
           <Search className="h-4 w-4 shrink-0 text-brand-steel-dim" />
           <input
             type="search"
@@ -71,12 +71,12 @@ export function Header() {
         <div className="ml-auto flex items-center gap-2 md:ml-0">
           <Link
             href="/quote"
-            className="relative flex items-center gap-2 rounded-lg border border-brand-border px-3 py-2 text-sm font-semibold text-brand-white transition hover:border-brand-orange"
+            className="relative flex items-center gap-2 border border-brand-border px-3 py-2 font-heading text-sm font-semibold uppercase text-brand-white transition hover:border-brand-orange"
           >
             <ClipboardList className="h-4 w-4" />
             <span className="hidden sm:inline">Quote List</span>
             {itemCount > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-orange px-1 text-[11px] font-bold text-brand-graphite">
+              <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center bg-brand-orange px-1 text-[11px] font-bold text-brand-graphite">
                 {itemCount}
               </span>
             )}
@@ -86,7 +86,7 @@ export function Header() {
             href={`https://wa.me/${businessSettings.whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-lg bg-brand-orange px-4 py-2 text-sm font-bold text-brand-graphite transition hover:brightness-110 sm:flex"
+            className="hidden items-center gap-2 bg-brand-orange px-4 py-2 font-heading text-sm font-bold uppercase text-brand-graphite transition hover:brightness-110 sm:flex"
           >
             <WhatsAppIcon className="h-4 w-4" />
             WhatsApp
@@ -96,7 +96,7 @@ export function Header() {
             type="button"
             aria-label="Toggle menu"
             onClick={() => setMobileOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-brand-border text-brand-white lg:hidden"
+            className="flex h-10 w-10 items-center justify-center border border-brand-border text-brand-white lg:hidden"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -105,7 +105,7 @@ export function Header() {
 
       {mobileOpen && (
         <div className="border-t border-brand-border bg-brand-graphite px-6 py-4 lg:hidden">
-          <div className="mb-4 flex items-center rounded-lg border border-brand-border bg-brand-surface px-3 py-2">
+          <div className="mb-4 flex items-center border border-brand-border bg-brand-surface px-3 py-2">
             <Search className="h-4 w-4 shrink-0 text-brand-steel-dim" />
             <input
               type="search"
@@ -119,7 +119,7 @@ export function Header() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-brand-steel hover:bg-brand-surface hover:text-brand-white"
+                className="border-b border-brand-border px-3 py-2.5 font-heading text-sm font-semibold uppercase text-brand-steel last:border-b-0 hover:bg-brand-surface hover:text-brand-white"
               >
                 {link.label}
               </Link>

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { MapPin, Phone, ShieldCheck } from "lucide-react";
 import { businessSettings } from "@/config/business";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { ProductVisual } from "@/components/ProductVisual";
+import { SectionMarker } from "@/components/brand/SectionMarker";
 
 export const metadata: Metadata = {
   title: "About | Starlite Tools",
@@ -28,23 +30,30 @@ const values = [
 export default function AboutPage() {
   return (
     <div>
-      <section className="grid-texture border-b border-brand-border bg-brand-graphite">
-        <div className="mx-auto max-w-4xl px-6 py-16 text-center">
-          <p className="text-xs font-semibold uppercase tracking-wider text-brand-orange">
-            About Starlite Tools
-          </p>
-          <h1 className="mt-3 font-heading text-4xl font-extrabold uppercase leading-tight text-brand-white sm:text-5xl">
-            Built in the market.
-            <br />
-            Ready for the next scale.
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-brand-steel">
-            {businessSettings.legalName} has supplied power tools, hand tools, welding
-            equipment, safety products and industrial supplies to technicians, contractors
-            and dealers across Nigeria for {businessSettings.yearsInBusiness} years. This
-            digital showroom brings that offline strength online — so customers, dealers
-            and bulk buyers can find products and request quotes faster.
-          </p>
+      <section className="technical-grid border-b border-brand-border bg-brand-graphite">
+        <div className="mx-auto grid max-w-7xl border-x border-brand-border lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="flex flex-col justify-center border-b border-brand-border px-6 py-16 sm:px-10 lg:border-b-0 lg:border-r lg:px-12">
+            <SectionMarker index="STL / 05" label="Company Profile" />
+            <h1 className="mt-5 font-heading text-5xl font-extrabold uppercase leading-[0.92] text-brand-white sm:text-6xl">
+              Built in the market.
+              <br />
+              <span className="text-brand-orange">Ready for scale.</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-brand-steel">
+              {businessSettings.legalName} supplies power tools, hand tools, welding
+              equipment, safety products and industrial supplies to technicians,
+              contractors and dealers across Nigeria. This digital showroom turns that
+              market experience into a faster product-to-quote workflow.
+            </p>
+          </div>
+          <ProductVisual
+            categorySlug="small-construction-equipment"
+            categoryName="Starlite industrial supply"
+            className="min-h-[420px]"
+            sizes="(min-width: 1024px) 55vw, 100vw"
+            imageClassName="p-[11%]"
+            priority
+          />
         </div>
       </section>
 
@@ -58,7 +67,7 @@ export default function AboutPage() {
           ].map(([stat, label]) => (
             <div
               key={label}
-              className="rounded-xl border border-brand-border bg-brand-surface p-6 text-center"
+              className="border border-brand-border bg-brand-surface p-6 text-center"
             >
               <p className="font-heading text-3xl font-extrabold text-brand-orange">{stat}</p>
               <p className="mt-1 text-xs uppercase tracking-wide text-brand-steel-dim">{label}</p>
@@ -81,7 +90,7 @@ export default function AboutPage() {
             {values.map((value) => (
               <div
                 key={value.title}
-                className="rounded-xl border border-brand-border bg-brand-surface p-6"
+                className="border border-brand-border bg-brand-surface p-6"
               >
                 <ShieldCheck className="h-8 w-8 text-brand-orange" strokeWidth={1.5} />
                 <h3 className="mt-4 font-heading text-lg font-bold text-brand-white">
@@ -123,14 +132,14 @@ export default function AboutPage() {
               href={`https://wa.me/${businessSettings.whatsappNumber}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-brand-orange px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
+              className="inline-flex items-center gap-2 bg-brand-orange px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Chat on WhatsApp
             </a>
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 rounded-lg border border-brand-border px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-white transition hover:border-brand-white"
+              className="inline-flex items-center gap-2 border border-brand-border px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-white transition hover:border-brand-white"
             >
               Browse Catalogue
             </Link>

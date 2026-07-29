@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Starlite Tools Digital Showroom
 
-## Getting Started
+A responsive industrial product catalogue and quote-request experience for Starlite Tools Company Limited. The site helps contractors, technicians, dealers, and bulk buyers explore the catalogue, compare products, assemble a quote list, and send a structured enquiry to the Starlite sales team through WhatsApp.
 
-First, run the development server:
+## Current experience
+
+- Industrial Starlite/INGCO visual system with a responsive dual-brand hero
+- 193 statically generated product-detail pages
+- Product search, category and brand filters, availability filters, sorting, and comparison
+- Persistent quote list and structured WhatsApp quote submission
+- Local quote-history dashboard for dealer follow-up
+- Responsive home, catalogue, product, quote, dealer, about, and contact experiences
+- Original generated category and reference visuals with transparent backgrounds
+
+Generated product renders are presentation/reference visuals, not official model photography. Exact product appearance should be confirmed before publishing a final commercial catalogue.
+
+## Stack
+
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Lucide icons
+
+## Development
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Validation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
-## Learn More
+The production build statically generates the catalogue and all product routes.
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+app/                    Routes and page composition
+components/             Shared UI, catalogue, quote, and dealer components
+components/home/        Homepage hero and supporting sections
+lib/                    Catalogue data, quote state, WhatsApp helpers, and image mapping
+public/images/tools/    Generated transparent tool visuals
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Catalogue and quote data
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Catalogue records currently live in `lib/ingco-catalogue.ts` and `lib/data.ts`. Quote selections and submitted quote history are stored locally in the browser; submitting a quote opens WhatsApp with a prepared sales message.

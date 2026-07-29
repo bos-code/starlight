@@ -3,7 +3,7 @@
 import { X } from "lucide-react";
 import { getBrand, getCategory } from "@/lib/data";
 import type { Product } from "@/lib/types";
-import { ProductImagePlaceholder } from "./ProductImagePlaceholder";
+import { ProductVisual } from "./ProductVisual";
 import { StatusBadge } from "./StatusBadge";
 
 export function ProductCompareTray({
@@ -55,7 +55,7 @@ export function ProductCompareTray({
             type="button"
             onClick={onOpen}
             disabled={products.length < 2}
-            className="rounded-lg bg-brand-orange px-4 py-2 text-xs font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
+            className="bg-brand-orange px-4 py-2 text-xs font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
           >
             Compare Now
           </button>
@@ -78,7 +78,7 @@ export function ProductCompareModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-0 sm:items-center sm:p-6">
-      <div className="max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-t-2xl border border-brand-border bg-brand-graphite-light sm:rounded-2xl">
+      <div className="max-h-[90vh] w-full max-w-5xl overflow-y-auto border border-brand-border bg-brand-graphite-light">
         <div className="sticky top-0 flex items-center justify-between border-b border-brand-border bg-brand-graphite-light px-6 py-4">
           <h2 className="font-heading text-lg font-bold uppercase text-brand-white">
             Compare Products
@@ -87,7 +87,7 @@ export function ProductCompareModal({
             type="button"
             onClick={onClose}
             aria-label="Close comparison"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-brand-border text-brand-steel hover:text-brand-white"
+            className="flex h-9 w-9 items-center justify-center border border-brand-border text-brand-steel hover:text-brand-white"
           >
             <X className="h-4 w-4" />
           </button>
@@ -104,10 +104,12 @@ export function ProductCompareModal({
                   const category = getCategory(p.categoryId);
                   return (
                     <th key={p.id} className="min-w-[180px] pb-4 pr-4 align-bottom">
-                      <ProductImagePlaceholder
+                      <ProductVisual
+                        product={p}
                         categorySlug={category?.slug ?? ""}
-                        className="aspect-square w-full rounded-lg"
-                        iconClassName="h-8 w-8"
+                        categoryName={category?.name}
+                        className="aspect-square w-full border border-brand-border"
+                        sizes="180px"
                       />
                       <p className="mt-2 font-heading text-sm font-semibold text-brand-white">
                         {p.name}

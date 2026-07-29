@@ -12,13 +12,13 @@ export function HeroProductAnnotations({ product }: { product: Product }) {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-px bg-brand-border">
         {specsToShow.map((spec) => (
           <span
             key={spec.label}
-            className="rounded-full border border-brand-ingco-yellow/25 bg-brand-graphite/60 px-3 py-1 font-mono-meta text-[11px] text-brand-white"
+            className="bg-brand-graphite/90 px-3 py-2 font-mono-meta text-[9px] uppercase tracking-[0.08em] text-brand-white"
           >
-            <span className="text-brand-steel-dim">{spec.label}:</span> {spec.value}
+            <span className="text-brand-steel-dim">{spec.label} / </span> {spec.value}
           </span>
         ))}
       </div>

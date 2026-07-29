@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { ArrowUpRight } from "lucide-react";
 import { getBrand, getCategory, getProductBySlug, getRelatedProducts, products } from "@/lib/data";
 import { StatusBadge } from "@/components/StatusBadge";
-import { ProductImagePlaceholder } from "@/components/ProductImagePlaceholder";
+import { ProductVisual } from "@/components/ProductVisual";
 import { ProductDetailActions } from "@/components/ProductDetailActions";
 import { ProductTabs } from "@/components/ProductTabs";
 import { ProductCard } from "@/components/ProductCard";
@@ -61,23 +61,35 @@ export default async function ProductDetailPage({
       </div>
 
       <div className="grid gap-10 lg:grid-cols-2">
-        {/* Gallery: vertical thumbnails + large primary image */}
+        {/* One honest reference view, supported by a compact technical rail. */}
         <div className="flex gap-3">
-          <div className="flex w-16 shrink-0 flex-col gap-2.5 sm:w-20">
-            {[0, 1, 2, 3].map((i) => (
-              <ProductImagePlaceholder
-                key={i}
-                categorySlug={category?.slug ?? ""}
-                className={`aspect-square w-full rounded-lg ${i === 0 ? "ring-2 ring-brand-orange" : "opacity-70"}`}
-                iconClassName="h-5 w-5"
-              />
-            ))}
+          <div className="hidden w-20 shrink-0 flex-col border border-brand-border bg-brand-surface sm:flex">
+            <span className="border-b border-brand-border bg-brand-orange px-2 py-2 font-mono-meta text-[9px] font-bold uppercase tracking-[0.12em] text-brand-graphite">
+              Visual 01
+            </span>
+            <dl className="flex flex-1 flex-col justify-between gap-4 p-2.5 font-mono-meta text-[8px] uppercase tracking-[0.1em] text-brand-steel-dim">
+              <div>
+                <dt>Model</dt>
+                <dd className="mt-1 break-all text-brand-white">{product.model}</dd>
+              </div>
+              <div>
+                <dt>Family</dt>
+                <dd className="mt-1 text-brand-white">{category?.name ?? "Tools"}</dd>
+              </div>
+              <div>
+                <dt>Source</dt>
+                <dd className="mt-1 text-brand-orange">Reference render</dd>
+              </div>
+            </dl>
           </div>
-          <ProductImagePlaceholder
+          <ProductVisual
+            product={product}
             categorySlug={category?.slug ?? ""}
             categoryName={category?.name}
-            className="aspect-square w-full flex-1 rounded-2xl"
-            iconClassName="h-24 w-24"
+            className="aspect-square w-full flex-1 border border-brand-border"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            priority
+            showReferenceLabel
           />
         </div>
 
@@ -86,7 +98,7 @@ export default async function ProductDetailPage({
           <div className="flex flex-wrap items-center gap-2">
             <StatusBadge status={product.availabilityStatus} />
             {product.isFeatured && (
-              <span className="inline-flex items-center rounded-full bg-brand-orange px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-brand-graphite">
+              <span className="inline-flex items-center bg-brand-orange px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-brand-graphite">
                 Featured
               </span>
             )}
@@ -109,7 +121,7 @@ export default async function ProductDetailPage({
             {product.shortDescription}
           </p>
 
-          <div className="mt-6 rounded-xl border border-brand-border bg-brand-surface p-5">
+          <div className="mt-6 border border-brand-border bg-brand-surface p-5">
             <p className="text-[11px] font-semibold uppercase tracking-wide text-brand-steel-dim">
               Price
             </p>
@@ -131,7 +143,7 @@ export default async function ProductDetailPage({
               href={buildProductEnquiryUrl(product)}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-lg border border-brand-border py-3 text-xs font-bold uppercase tracking-wide text-brand-white transition hover:border-emerald-400 hover:text-emerald-400"
+              className="flex items-center justify-center gap-2 border border-brand-border py-3 text-xs font-bold uppercase tracking-wide text-brand-white transition hover:border-emerald-400 hover:text-emerald-400"
             >
               <WhatsAppIcon className="h-4 w-4" />
               WhatsApp Enquiry
@@ -140,7 +152,7 @@ export default async function ProductDetailPage({
               href={buildDealerPriceRequestUrl(product)}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-lg border border-brand-border py-3 text-xs font-bold uppercase tracking-wide text-brand-white transition hover:border-brand-orange hover:text-brand-orange"
+              className="flex items-center justify-center gap-2 border border-brand-border py-3 text-xs font-bold uppercase tracking-wide text-brand-white transition hover:border-brand-orange hover:text-brand-orange"
             >
               Request Dealer Price
               <ArrowUpRight className="h-3.5 w-3.5" />

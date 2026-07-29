@@ -15,7 +15,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
   return (
     <div>
       <div className="flex items-center gap-3">
-        <div className="flex items-center rounded-lg border border-brand-border">
+        <div className="flex items-center border border-brand-border">
           <button
             type="button"
             aria-label="Decrease quantity"
@@ -48,7 +48,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
             setAdded(true);
             setTimeout(() => setAdded(false), 2000);
           }}
-          className="flex-1 rounded-lg bg-brand-orange px-6 py-3 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
+          className="flex-1 bg-brand-orange px-6 py-3 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110"
         >
           {added ? "Added to Quote" : "Request Quote"}
         </button>
@@ -60,7 +60,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
           addItem(product.id, quantity);
           router.push("/quote");
         }}
-        className="mt-3 w-full rounded-lg border border-brand-border py-3 text-sm font-semibold text-brand-white transition hover:border-brand-white"
+        className="mt-3 w-full border border-brand-border py-3 text-sm font-semibold text-brand-white transition hover:border-brand-white"
       >
         Add &amp; Go to Quote List
       </button>

@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  /* Foundation — deep graphite/navy, the site's default surface */
-  --color-navy: #0b1f33;
-  --color-navy-light: #16324f;
-  --color-graphite: #121316;
-  --color-graphite-light: #1b1d22;
-  --color-surface: #191b20;
-  --color-surface-raised: #21242b;
-  --color-border: #2b2f37;
-  --color-steel: #a8b0ba;
-  --color-steel-dim: #6b7280;
-  --color-white: #f7f8fa;
+  /* Foundation — near-black workshop graphite with a faint green cast. */
+  --color-navy: #071311;
+  --color-navy-light: #0e211d;
+  --color-graphite: #0b0e0d;
+  --color-graphite-light: #0f1412;
+  --color-surface: #121715;
+  --color-surface-raised: #181e1b;
+  --color-border: #29312e;
+  --color-steel: #a9b1ad;
+  --color-steel-dim: #69736e;
+  --color-white: #f1f3ef;
 
   /* Warm industrial ivory — used sparingly for selected light sections */
   --color-ivory: #f2ede0;
@@ -21,14 +21,14 @@
   --color-ivory-ink-dim: #5c5443;
 
   /* Action + state colors */
-  --color-orange: #f97316;
-  --color-orange-dim: #c2570a;
-  --color-amber: #f5a524;
+  --color-orange: #ff5a1f;
+  --color-orange-dim: #b83d12;
+  --color-amber: #f29d38;
   --color-green: #22c55e;
   --color-red: #ef4444;
 
   /* Reserved strictly for INGCO-specific content (P20S banner, INGCO badges) */
-  --color-ingco-yellow: #f5c400;
+  --color-ingco-yellow: #ffb800;
 
   --background: var(--color-graphite);
   --foreground: var(--color-white);
@@ -71,6 +71,15 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-width: 320px;
+  background-image:
+    radial-gradient(circle at 15% -10%, rgba(255, 90, 31, 0.07), transparent 26rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 16rem);
+}
+
+html {
+  background: var(--background);
+  scroll-behavior: smooth;
 }
 
 @layer utilities {
@@ -87,20 +96,58 @@ body {
   }
 
   .input {
-    @apply w-full rounded-lg border border-brand-border bg-brand-graphite px-3.5 py-2.5 text-sm text-brand-white placeholder:text-brand-steel-dim focus:border-brand-orange focus:outline-none;
+    @apply w-full border border-brand-border bg-brand-graphite px-3.5 py-2.5 text-sm text-brand-white placeholder:text-brand-steel-dim focus:border-brand-orange focus:outline-none;
   }
 
   .input-ivory {
-    @apply w-full rounded-lg border border-brand-ivory-border bg-brand-ivory-raised px-3.5 py-2.5 text-sm text-brand-ivory-ink placeholder:text-brand-ivory-ink-dim focus:border-brand-orange focus:outline-none;
+    @apply w-full border border-brand-ivory-border bg-brand-ivory-raised px-3.5 py-2.5 text-sm text-brand-ivory-ink placeholder:text-brand-ivory-ink-dim focus:border-brand-orange focus:outline-none;
   }
 }
 
 /* Subtle industrial texture on hero / dark panels */
 .grid-texture {
   background-image:
-    linear-gradient(rgba(168, 176, 186, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(168, 176, 186, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(168, 176, 186, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 176, 186, 0.055) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+.technical-grid {
+  background-image:
+    linear-gradient(rgba(169, 177, 173, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(169, 177, 173, 0.045) 1px, transparent 1px),
+    linear-gradient(rgba(255, 90, 31, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 90, 31, 0.025) 1px, transparent 1px);
+  background-position: 0 0, 0 0, 0 0, 0 0;
+  background-size: 32px 32px, 32px 32px, 160px 160px, 160px 160px;
+}
+
+.product-stage {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 90, 31, 0.11), transparent 35%),
+    linear-gradient(145deg, #151a18 0%, #0b0e0d 72%);
+}
+
+.product-stage::before,
+.product-stage::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.product-stage::before {
+  inset: 10px;
+  border: 1px solid rgba(169, 177, 173, 0.07);
+}
+
+.product-stage::after {
+  right: 10px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  border-right: 1px solid rgba(255, 90, 31, 0.65);
+  border-top: 1px solid rgba(255, 90, 31, 0.65);
 }
 
 .grid-texture-ivory {
@@ -112,7 +159,7 @@ body {
 
 ::selection {
   background: var(--color-orange);
-  color: var(--color-white);
+  color: var(--color-graphite);
 }
 
 @keyframes fracture-pulse {

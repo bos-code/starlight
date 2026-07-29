@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CheckCircle2, Minus, Plus, Trash2 } from "lucide-react";
 import { useQuote } from "@/lib/quote-context";
 import { getBrand, getCategory } from "@/lib/data";
-import { ProductImagePlaceholder } from "./ProductImagePlaceholder";
+import { ProductVisual } from "./ProductVisual";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { buildWhatsAppMessage, buildWhatsAppUrl, type QuoteBuyerDetails } from "@/lib/whatsapp";
 import { addStoredQuote } from "@/lib/quote-log";
@@ -96,14 +96,14 @@ export function QuoteBuilder() {
         <div className="mt-8 flex gap-3">
           <Link
             href="/products"
-            className="rounded-lg border border-brand-border px-5 py-3 text-sm font-semibold text-brand-white hover:border-brand-white"
+            className="border border-brand-border px-5 py-3 text-sm font-semibold text-brand-white hover:border-brand-white"
           >
             Continue Browsing
           </Link>
           <button
             type="button"
             onClick={() => setReference(null)}
-            className="rounded-lg bg-brand-orange px-5 py-3 text-sm font-bold uppercase tracking-wide text-brand-graphite hover:brightness-110"
+            className="bg-brand-orange px-5 py-3 text-sm font-bold uppercase tracking-wide text-brand-graphite hover:brightness-110"
           >
             Start New Quote
           </button>
@@ -130,7 +130,7 @@ export function QuoteBuilder() {
       <form onSubmit={handleSubmit} className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
         <div className="space-y-4">
           {lineItems.length === 0 ? (
-            <div className="rounded-xl border border-dashed border-brand-border py-20 text-center text-brand-steel">
+            <div className="border border-dashed border-brand-border py-20 text-center text-brand-steel">
               Your quote list is empty.{" "}
               <Link href="/products" className="text-brand-orange hover:underline">
                 Browse the catalogue
@@ -144,12 +144,14 @@ export function QuoteBuilder() {
               return (
                 <div
                   key={product.id}
-                  className="flex items-center gap-4 rounded-xl border border-brand-border bg-brand-surface p-4"
+                  className="flex items-center gap-4 border border-brand-border bg-brand-surface p-4"
                 >
-                  <ProductImagePlaceholder
+                  <ProductVisual
+                    product={product}
                     categorySlug={category?.slug ?? ""}
-                    className="h-20 w-20 shrink-0 rounded-lg"
-                    iconClassName="h-8 w-8"
+                    categoryName={category?.name}
+                    className="h-20 w-20 shrink-0 border border-brand-border"
+                    sizes="80px"
                   />
                   <div className="min-w-0 flex-1">
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-brand-orange">
@@ -160,7 +162,7 @@ export function QuoteBuilder() {
                     </p>
                     <p className="text-xs text-brand-steel-dim">Model {product.model}</p>
                   </div>
-                  <div className="flex items-center rounded-lg border border-brand-border">
+                  <div className="flex items-center border border-brand-border">
                     <button
                       type="button"
                       aria-label="Decrease quantity"
@@ -183,7 +185,7 @@ export function QuoteBuilder() {
                     type="button"
                     aria-label="Remove item"
                     onClick={() => removeItem(product.id)}
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-brand-steel-dim hover:bg-red-500/10 hover:text-red-400"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center border border-transparent text-brand-steel-dim hover:border-red-500/30 hover:bg-red-500/10 hover:text-red-400"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>
@@ -193,7 +195,7 @@ export function QuoteBuilder() {
           )}
         </div>
 
-        <div className="h-fit space-y-5 rounded-xl border border-brand-border bg-brand-surface p-6">
+        <div className="h-fit space-y-5 border border-brand-border bg-brand-surface p-6">
           <h2 className="font-heading text-lg font-bold uppercase text-brand-white">
             Buyer Information
           </h2>
@@ -281,7 +283,7 @@ export function QuoteBuilder() {
           <button
             type="submit"
             disabled={lineItems.length === 0}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-orange py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
+            className="flex w-full items-center justify-center gap-2 bg-brand-orange py-3.5 text-sm font-bold uppercase tracking-wide text-brand-graphite transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
           >
             <WhatsAppIcon className="h-4 w-4" />
             Submit Quote Request
