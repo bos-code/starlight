@@ -20,15 +20,15 @@
   --color-ivory-ink: #241f16;
   --color-ivory-ink-dim: #5c5443;
 
-  /* Action + state colors */
-  --color-orange: #ff5a1f;
-  --color-orange-dim: #b83d12;
-  --color-amber: #f29d38;
+  /* Primary action + state colors — yellow now drives the visual system. */
+  --color-orange: #f4c400;
+  --color-orange-dim: #b58f00;
+  --color-amber: #ffd84d;
   --color-green: #22c55e;
   --color-red: #ef4444;
 
-  /* Reserved strictly for INGCO-specific content (P20S banner, INGCO badges) */
-  --color-ingco-yellow: #ffb800;
+  /* INGCO-specific yellow remains visually aligned with the main accent. */
+  --color-ingco-yellow: #ffc400;
 
   --background: var(--color-graphite);
   --foreground: var(--color-white);
@@ -73,7 +73,7 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   min-width: 320px;
   background-image:
-    radial-gradient(circle at 15% -10%, rgba(255, 90, 31, 0.07), transparent 26rem),
+    radial-gradient(circle at 15% -10%, rgba(244, 196, 0, 0.08), transparent 26rem),
     linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 16rem);
 }
 
@@ -116,15 +116,15 @@ html {
   background-image:
     linear-gradient(rgba(169, 177, 173, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(169, 177, 173, 0.045) 1px, transparent 1px),
-    linear-gradient(rgba(255, 90, 31, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 90, 31, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(244, 196, 0, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 196, 0, 0.028) 1px, transparent 1px);
   background-position: 0 0, 0 0, 0 0, 0 0;
   background-size: 32px 32px, 32px 32px, 160px 160px, 160px 160px;
 }
 
 .product-stage {
   background:
-    radial-gradient(circle at 50% 48%, rgba(255, 90, 31, 0.11), transparent 35%),
+    radial-gradient(circle at 50% 48%, rgba(244, 196, 0, 0.12), transparent 35%),
     linear-gradient(145deg, #151a18 0%, #0b0e0d 72%);
 }
 
@@ -146,8 +146,8 @@ html {
   top: 10px;
   width: 30px;
   height: 30px;
-  border-right: 1px solid rgba(255, 90, 31, 0.65);
-  border-top: 1px solid rgba(255, 90, 31, 0.65);
+  border-right: 1px solid rgba(244, 196, 0, 0.72);
+  border-top: 1px solid rgba(244, 196, 0, 0.72);
 }
 
 .grid-texture-ivory {
