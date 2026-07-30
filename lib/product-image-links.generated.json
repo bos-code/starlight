@@ -1,0 +1,1330 @@
+{
+  "_meta": {
+    "generatedAt": "2026-07-30T03:58:47.330Z",
+    "catalogueProducts": 188,
+    "exactImages": 188,
+    "localImages": 188,
+    "unresolved": 0,
+    "disclaimer": "docs/IMAGE_USE_AND_ATTRIBUTION.md"
+  },
+  "images": {
+    "AG10108": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG10108.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG10108",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag10108.jpg"
+    },
+    "AG10108-2": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG10108-2.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG10108-2",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag10108-2.jpg"
+    },
+    "AG10108-5": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG10108-5.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG10108-5",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag10108-5.jpg"
+    },
+    "AG110018": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG110018.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG110018",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag110018.jpg"
+    },
+    "AG130018": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG130018.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG130018",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag130018.jpg"
+    },
+    "AG150018": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG150018.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG150018",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag150018.jpg"
+    },
+    "AG1500182": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG1500182.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG1500182",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag1500182.jpg"
+    },
+    "AG200018": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG200018.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG200018",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag200018.jpg"
+    },
+    "AG220018": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG220018.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG220018",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag220018.jpg"
+    },
+    "AG24008": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG24008.JPG",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG24008",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag24008.jpg"
+    },
+    "AG26008": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG26008.JPG",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG26008",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag26008.jpg"
+    },
+    "AG30008": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG30008.JPG",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG30008",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag30008.jpg"
+    },
+    "AG75028": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG75028.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG75028",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag75028.jpg"
+    },
+    "AG750282": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG750282.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG750282",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag750282.jpg"
+    },
+    "AG90028": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG90028.png",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG90028",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag90028.png"
+    },
+    "AG900282": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG900282.png",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG900282",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag900282.png"
+    },
+    "AG95018": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AG95018.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-grinder/AG95018",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ag95018.jpg"
+    },
+    "AP12008": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/AP12008.jpg",
+      "sourceUrl": "https://www.ingco.com/product/angle-polisher/AP12008",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ap12008.jpg"
+    },
+    "AP14008": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/AP14008.jpg",
+      "sourceUrl": "https://www.ingco.com/product/polisher/AP14008",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ap14008.jpg"
+    },
+    "CABLI2001": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/90901dced6bb41c4a8e05d8aa6c2cb09.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-aspirator-blower/CABLI2001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cabli2001.jpg"
+    },
+    "CABLI20018": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/CABLI20018.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-blower/CABLI20018",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cabli20018.jpg"
+    },
+    "CABLI200181": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200904231500306/CABLI200181.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-blower/CABLI200181",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cabli200181.jpg"
+    },
+    "CAGLI1001": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/2b5f4a0fda2e4411b4dec10022d687fe.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-angle-grinder/CAGLI1001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cagli1001.jpg"
+    },
+    "CAGLI1002": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/9749ed76473c4e8cab770a417de8236c.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-angle-grinder/CAGLI1002",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cagli1002.jpg"
+    },
+    "CAGLI10022": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200904231500306/CAGLI10022.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-angle-grinder/CAGLI10022",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cagli10022.jpg"
+    },
+    "CAGLI1003": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CAGLI1003.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-angle-grinder/CAGLI1003",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cagli1003.jpg"
+    },
+    "CAGLI1151": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/c705a044853847a693fc064437c57aa1.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-angle-grinder/CAGLI1151",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cagli1151.jpg"
+    },
+    "CAGLI1152": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/f0a48437f8de446da2d2130902a3daa9.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-angle-grinder/CAGLI1152",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cagli1152.jpg"
+    },
+    "CAGLI11522": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200904231500306/CAGLI11522.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-angle-grinder/CAGLI11522",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cagli11522.jpg"
+    },
+    "CDLI1211": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/8e820bc47c1d40b488ce4aa75fdd1db1.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-drill/CDLI1211",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cdli1211.jpg"
+    },
+    "CDLI1221": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CDLI1221.JPG",
+      "sourceUrl": "https://www.ingco.com/product/cordless-drill/CDLI1221",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cdli1221.jpg"
+    },
+    "CDLI1222": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/37f21bc28bba47418b7e9e429b4ec9a6.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-drill/CDLI1222",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cdli1222.jpg"
+    },
+    "CDLI12325": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/529f84e271a84ef9b1e3a10e14369fe0.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-drill/CDLI12325",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cdli12325.jpg"
+    },
+    "CDLI20011": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/bdf23992f019419a901a8c63b993418e.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-drill/CDLI20011",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cdli20011.jpg"
+    },
+    "CDLI20012": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CDLI20012.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-drill/CDLI20012",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cdli20012.jpg"
+    },
+    "CFALI2001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CFALI2001.JPG",
+      "sourceUrl": "https://www.ingco.com/product/cordless-fan/CFALI2001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cfali2001.jpg"
+    },
+    "CFALI2002": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CFALI2002.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-fan/CFALI2002",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cfali2002.jpg"
+    },
+    "CGTLI20018": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200822231500539/CGTLI20018.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-grass-trimmer/CGTLI20018",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cgtli20018.jpg"
+    },
+    "CGTLI20301": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200822231500539/CGTLI20301.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-grass-trimmer/CGTLI20301",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cgtli20301.jpg"
+    },
+    "CHTLI20018": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200822231500539/CHTLI20018.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-hedge-trimmer/CHTLI20018",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/chtli20018.jpg"
+    },
+    "CHTLI20461": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200822231500539/CHTLI20461.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-hedge-trimmer/CHTLI20461",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/chtli20461.jpg"
+    },
+    "CIDLI20012": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/0273f1ccd5104f4f85ba271bb3451817.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-impact-drill/CIDLI20012",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cidli20012.jpg"
+    },
+    "CIDLI2002": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/e3ee0f7e2e184dca9bd78c5029d7eb35.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-impact-drill/CIDLI2002",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cidli2002.jpg"
+    },
+    "CIDLI20031": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CIDLI20031.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-impact-drill/CIDLI20031",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cidli20031.jpg"
+    },
+    "CIWLI2001": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/515dfd7940454770a58aaa78fea980c4.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-impact-wrench/CIWLI2001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ciwli2001.jpg"
+    },
+    "CJRLI2001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CJRLI2001.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-job-radio/CJRLI2001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cjrli2001.jpg"
+    },
+    "CKLI1201": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/CKLI1201.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-2-pcs-combo-kit/CKLI1201",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ckli1201.jpg"
+    },
+    "CKLI2006": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/8693729fe9da42fa9216ab226697664e.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-2-pcs-combo-kit/CKLI2006",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ckli2006.jpg"
+    },
+    "CKLI2007": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/e2a801e0dd7246dda1a01e4da88d2277.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-2-pcs-combo-kit/CKLI2007",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ckli2007.jpg"
+    },
+    "CKLI2008": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/43e7ce29ef3148538d41f697364d05e1.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-2-pcs-combo-kit/CKLI2008",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ckli2008.jpg"
+    },
+    "CKLI2009": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/1bef82ad9ecc44fea5c02632e5cffdce.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-2-pcs-combo-kit/CKLI2009",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ckli2009.jpg"
+    },
+    "CKLI2010": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/5857398902874c3c97b9de19ce1d6e7f.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-4-pcs-combo-kit/CKLI2010",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ckli2010.jpg"
+    },
+    "CPM15008": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CPM15008.JPG",
+      "sourceUrl": "https://www.ingco.com/product/water-pump/CPM15008",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cpm15008.jpg"
+    },
+    "CPM7508": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CPM7508.JPG",
+      "sourceUrl": "https://www.ingco.com/product/water-pump/CPM7508",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cpm7508.jpg"
+    },
+    "CRCLI2002": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CRCLI2002.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-hydraulic-cable-cutter/CRCLI2002",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/crcli2002.jpg"
+    },
+    "CRHLI1601": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/80775c873eb1402bba7f16c414e92b10.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-rotary-hammer/CRHLI1601",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/crhli1601.jpg"
+    },
+    "CRHLI2201": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/d10a17fc54714d3e92d3c80ba77b7bc6.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-rotary-hammer/CRHLI2201",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/crhli2201.jpg"
+    },
+    "CRHLI22012": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200904231500306/CRHLI22012.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-rotary-hammer/CRHLI22012",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/crhli22012.jpg"
+    },
+    "CSDLI0402": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CSDLI0402.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-screwdriver/CSDLI0402",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/csdli0402.jpg"
+    },
+    "CSDLI0801": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CSDLI0801.JPG",
+      "sourceUrl": "https://www.ingco.com/product/cordless-screwdriver/CSDLI0801",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/csdli0801.jpg"
+    },
+    "CSGLI2001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200901231500423/CSGLI2001.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-spray-gun/CSGLI2001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/csgli2001.jpg"
+    },
+    "CSTLI2001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/CSTLI2001.png",
+      "sourceUrl": "https://www.ingco.com/product/cordless-garden-shear/CSTLI2001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cstli2001.png"
+    },
+    "CSTLI20018": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200927231500156/CSTLI20018.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-string-trimmer-and-brush-cutter/CSTLI20018",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cstli20018.jpg"
+    },
+    "CSTLI202522": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200826231500575/CSTLI202522.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-string-trimmer-and-brush-cutter/CSTLI202522",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cstli202522.jpg"
+    },
+    "CTLI2002": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CTLI2002.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-hydraulic-crimping-tool/CTLI2002",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ctli2002.jpg"
+    },
+    "CUCLI2001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/CUCLI2001.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-power-source/CUCLI2001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cucli2001.jpg"
+    },
+    "CVLI2001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200903231500284/CVLI2001.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-vacuum-cleaner/CVLI2001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cvli2001.jpg"
+    },
+    "CVLI2005E": {
+      "imageUrl": "https://www.ingco.com/website-center/upload/images/010bfc905e6f46389137f5e121d9cbf6.jpg",
+      "sourceUrl": "https://www.ingco.com/product/cordless-vacuum-cleaner/CVLI2005E",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/cvli2005e.jpg"
+    },
+    "DMD044052": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/DMD044052.JPG",
+      "sourceUrl": "https://www.ingco.com/product/diamond-disc-for-floor-saw/DMD044052",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/dmd044052.jpg"
+    },
+    "DMD064051": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/DMD064051.JPG",
+      "sourceUrl": "https://www.ingco.com/product/diamond-disc-for-floor-saw/DMD064051",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/dmd064051.jpg"
+    },
+    "FBLI12152": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/FBLI12152.jpg",
+      "sourceUrl": "https://www.ingco.com/product/lithium-ion-battery-pack/FBLI12152",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/fbli12152.jpg"
+    },
+    "FBLI20011": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/FBLI20011.jpg",
+      "sourceUrl": "https://www.ingco.com/product/lithium-ion-battery-pack/FBLI20011",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/fbli20011.jpg"
+    },
+    "FBLI2002": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/FBLI2002.JPG",
+      "sourceUrl": "https://www.ingco.com/product/lithium-ion-battery-pack/FBLI2002",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/fbli2002.jpg"
+    },
+    "FCLI12071": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/FCLI12071.jpg",
+      "sourceUrl": "https://www.ingco.com/product/s12-battery-charger/FCLI12071",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/fcli12071.jpg"
+    },
+    "FCLI2001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/FCLI2001.jpg",
+      "sourceUrl": "https://www.ingco.com/product/battery-charger/FCLI2001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/fcli2001.jpg"
+    },
+    "GCP060-1": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GCP060-1.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-plate-compactor/GCP060-1",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gcp060-1.jpg"
+    },
+    "GCP060-2": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GCP060-2.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-plate-compactor/GCP060-2",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gcp060-2.jpg"
+    },
+    "GCP100-1": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GCP100-1.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-plate-compactor/GCP100-1",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gcp100-1.jpg"
+    },
+    "GCP100-2": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GCP100-2.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-plate-compactor/GCP100-2",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gcp100-2.jpg"
+    },
+    "GCP125-1": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GCP125-1.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-reversible-plate-compactor/GCP125-1",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gcp125-1.jpg"
+    },
+    "GCP125-2": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GCP125-2.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-reversible-plate-compactor/GCP125-2",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gcp125-2.jpg"
+    },
+    "GCP160-1": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GCP160-1.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-reversible-plate-compactor/GCP160-1",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gcp160-1.jpg"
+    },
+    "GCP160-2": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GCP160-2.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-reversible-plate-compactor/GCP160-2",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gcp160-2.jpg"
+    },
+    "GDE30001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GDE30001.jpg",
+      "sourceUrl": "https://www.ingco.com/product/diesel-generator/GDE30001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gde30001.jpg"
+    },
+    "GDE50001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GDE50001.jpg",
+      "sourceUrl": "https://www.ingco.com/product/diesel-generator/GDE50001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gde50001.jpg"
+    },
+    "GDE50003": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GDE50003.jpg",
+      "sourceUrl": "https://www.ingco.com/product/diesel-generator/GDE50003",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gde50003.jpg"
+    },
+    "GDW65001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GDW65001.jpg",
+      "sourceUrl": "https://www.ingco.com/product/diesel-welder-generator/GDW65001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gdw65001.jpg"
+    },
+    "GE150006ES": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GE150006ES.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-generator/GE150006ES",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ge150006es.jpg"
+    },
+    "GE30005": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GE30005.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-generator/GE30005",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ge30005.jpg"
+    },
+    "GE30005-1": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200827231500529/GE30005-1.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-generator/GE30005-1",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ge30005-1.jpg"
+    },
+    "GE35006": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GE35006.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-generator/GE35006",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ge35006.jpg"
+    },
+    "GE35006ES": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GE35006ES.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-generator/GE35006ES",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ge35006es.jpg"
+    },
+    "GE55003": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GE55003.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-generator/GE55003",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ge55003.jpg"
+    },
+    "GE65006": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GE65006.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-generator/GE65006",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ge65006.jpg"
+    },
+    "GE75006": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GE75006.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-generator/GE75006",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ge75006.jpg"
+    },
+    "GE8002": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20201010231500495/GE8002.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-generator/GE8002",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/ge8002.jpg"
+    },
+    "GEN1682": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GEN1682.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-engine/GEN1682",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gen1682.jpg"
+    },
+    "GEN1882": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GEN1882.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-engine/GEN1882",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gen1882.jpg"
+    },
+    "GEP201": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GEP201.jpg",
+      "sourceUrl": "https://www.ingco.com/product/diesel-water-pump/GEP201",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gep201.jpg"
+    },
+    "GEP301": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GEP301.jpg",
+      "sourceUrl": "https://www.ingco.com/product/diesel-water-pump/GEP301",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gep301.jpg"
+    },
+    "GEP401": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GEP401.jpg",
+      "sourceUrl": "https://www.ingco.com/product/diesel-water-pump/GEP401",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gep401.jpg"
+    },
+    "GPT361-1": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GPT361-1.JPG",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-power-trowel/GPT361-1",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gpt361-1.jpg"
+    },
+    "GPT361-2": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GPT361-2.JPG",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-power-trowel/GPT361-2",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gpt361-2.jpg"
+    },
+    "GRT75-1": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GRT75-1.JPG",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-tamping-rammer/GRT75-1",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/grt75-1.jpg"
+    },
+    "GRT75-2": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GRT75-2.JPG",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-tamping-rammer/GRT75-2",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/grt75-2.jpg"
+    },
+    "GSE50001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GSE50001.jpg",
+      "sourceUrl": "https://www.ingco.com/product/silent-diesel-generator/GSE50001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gse50001.jpg"
+    },
+    "GSE50003": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GSE50003.jpg",
+      "sourceUrl": "https://www.ingco.com/product/silent-diesel-generator/GSE50003",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gse50003.jpg"
+    },
+    "GSF16-1": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GSF16-1.JPG",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-floor-saw/GSF16-1",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gsf16-1.jpg"
+    },
+    "GSF16-2": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GSF16-2.JPG",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-floor-saw/GSF16-2",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gsf16-2.jpg"
+    },
+    "GVR-1": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GVR-1.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-concrete-vibrator-claw-type/GVR-1",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gvr-1.jpg"
+    },
+    "GVR-2": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GVR-2.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-concrete-vibrator-claw-type/GVR-2",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gvr-2.jpg"
+    },
+    "GWP102": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GWP102.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-water-pump/GWP102",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gwp102.jpg"
+    },
+    "GWP202": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GWP202.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-water-pump/GWP202",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gwp202.jpg"
+    },
+    "GWP302": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GWP302.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-water-pump/GWP302",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gwp302.jpg"
+    },
+    "GWP402": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/GWP402.jpg",
+      "sourceUrl": "https://www.ingco.com/product/gasoline-water-pump/GWP402",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/gwp402.jpg"
+    },
+    "HBPH04016": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/HBPH04016.JPG",
+      "sourceUrl": "https://www.ingco.com/product/ball-pein-hammer/HBPH04016",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hbph04016.jpg"
+    },
+    "HBPH04024": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/HBPH04024.JPG",
+      "sourceUrl": "https://www.ingco.com/product/ball-pein-hammer/HBPH04024",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hbph04024.jpg"
+    },
+    "HBPH88016": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HBPH88016.jpg",
+      "sourceUrl": "https://www.ingco.com/product/ball-pein-hammer/HBPH88016",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hbph88016.jpg"
+    },
+    "HBPH88024": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HBPH88024.jpg",
+      "sourceUrl": "https://www.ingco.com/product/ball-pein-hammer/HBPH88024",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hbph88024.jpg"
+    },
+    "HCH0408": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/HCH0408.JPG",
+      "sourceUrl": "https://www.ingco.com/product/claw-hammer/HCH0408",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hch0408.jpg"
+    },
+    "HCH0416": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HCH0416.jpg",
+      "sourceUrl": "https://www.ingco.com/product/claw-hammer/HCH0416",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hch0416.jpg"
+    },
+    "HCH80808": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HCH80808.jpg",
+      "sourceUrl": "https://www.ingco.com/product/claw-hammer/HCH80808",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hch80808.jpg"
+    },
+    "HCH80816": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HCH80816.jpg",
+      "sourceUrl": "https://www.ingco.com/product/claw-hammer/HCH80816",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hch80816.jpg"
+    },
+    "HG200028": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HG200028.JPG",
+      "sourceUrl": "https://www.ingco.com/product/heat-gun/HG200028",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hg200028.jpg"
+    },
+    "HG200028-1": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/HG200028-1.JPG",
+      "sourceUrl": "https://www.ingco.com/product/heat-gun/HG200028-1",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hg200028-1.jpg"
+    },
+    "HG200038": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HG200038.jpg",
+      "sourceUrl": "https://www.ingco.com/product/heat-gun/HG200038",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hg200038.jpg"
+    },
+    "HHIS0119L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0119L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0119L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0119l.jpg"
+    },
+    "HHIS0121L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0121L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0121L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0121l.jpg"
+    },
+    "HHIS0122L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0122L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0122L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0122l.jpg"
+    },
+    "HHIS0123L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0123L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0123L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0123l.jpg"
+    },
+    "HHIS0124L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0124L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0124L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0124l.jpg"
+    },
+    "HHIS0127L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0127L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0127L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0127l.jpg"
+    },
+    "HHIS0130L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0130L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0130L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0130l.jpg"
+    },
+    "HHIS0132L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0132L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0132L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0132l.jpg"
+    },
+    "HHIS0133L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0133L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0133L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0133l.jpg"
+    },
+    "HHIS0134L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0134L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0134L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0134l.jpg"
+    },
+    "HHIS0136L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0136L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0136L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0136l.jpg"
+    },
+    "HHIS0138L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0138L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0138L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0138l.jpg"
+    },
+    "HHIS0141L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0141L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0141L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0141l.jpg"
+    },
+    "HHIS0142L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0142L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0142L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0142l.jpg"
+    },
+    "HHIS0146L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0146L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0146L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0146l.jpg"
+    },
+    "HHIS0148L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HHIS0148L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/1-dr-impact-socket/HHIS0148L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hhis0148l.jpg"
+    },
+    "HKISSD12101": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HKISSD12101.jpg",
+      "sourceUrl": "https://www.ingco.com/product/10-pcs-1-2-dr-impact-socket-set/HKISSD12101",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hkissd12101.jpg"
+    },
+    "HKISSD12102L": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HKISSD12102L.jpg",
+      "sourceUrl": "https://www.ingco.com/product/10-pcs-1-2-deep-impact-socket-set/HKISSD12102L",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hkissd12102l.jpg"
+    },
+    "HKTHP11151": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20201017231500703/HKTHP11151.jpg",
+      "sourceUrl": "https://www.ingco.com/product/115-pcs-tools-set/HKTHP11151",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hkthp11151.jpg"
+    },
+    "HMH040300": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HMH040300.jpg",
+      "sourceUrl": "https://www.ingco.com/product/machinist-hammer/HMH040300",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hmh040300.jpg"
+    },
+    "HMH040500": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/HMH040500.JPG",
+      "sourceUrl": "https://www.ingco.com/product/machinist-hammer/HMH040500",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hmh040500.jpg"
+    },
+    "HMH041000": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/HMH041000.JPG",
+      "sourceUrl": "https://www.ingco.com/product/machinist-hammer/HMH041000",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hmh041000.jpg"
+    },
+    "HMH041500": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/HMH041500.JPG",
+      "sourceUrl": "https://www.ingco.com/product/machinist-hammer/HMH041500",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hmh041500.jpg"
+    },
+    "HMH042000": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/HMH042000.JPG",
+      "sourceUrl": "https://www.ingco.com/product/machinist-hammer/HMH042000",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hmh042000.jpg"
+    },
+    "HMH880300": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HMH880300.jpg",
+      "sourceUrl": "https://www.ingco.com/product/machinist-hammer/HMH880300",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hmh880300.jpg"
+    },
+    "HMH880500": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HMH880500.jpg",
+      "sourceUrl": "https://www.ingco.com/product/machinist-hammer/HMH880500",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hmh880500.jpg"
+    },
+    "HMH881000": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HMH881000.jpg",
+      "sourceUrl": "https://www.ingco.com/product/machinist-hammer/HMH881000",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hmh881000.jpg"
+    },
+    "HRPH8140": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HRPH8140.jpg",
+      "sourceUrl": "https://www.ingco.com/product/rubber-and-plastic-hammer/HRPH8140",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hrph8140.jpg"
+    },
+    "HRUH8208": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HRUH8208.jpg",
+      "sourceUrl": "https://www.ingco.com/product/rubber-hammer/HRUH8208",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hruh8208.jpg"
+    },
+    "HRUH8216": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HRUH8216.jpg",
+      "sourceUrl": "https://www.ingco.com/product/rubber-hammer/HRUH8216",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hruh8216.jpg"
+    },
+    "HSL08030": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSL08030.JPG",
+      "sourceUrl": "https://www.ingco.com/product/spirit-level/HSL08030",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsl08030.jpg"
+    },
+    "HSL08040": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSL08040.JPG",
+      "sourceUrl": "https://www.ingco.com/product/spirit-level/HSL08040",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsl08040.jpg"
+    },
+    "HSL08050": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSL08050.JPG",
+      "sourceUrl": "https://www.ingco.com/product/spirit-level/HSL08050",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsl08050.jpg"
+    },
+    "HSL08060": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSL08060.JPG",
+      "sourceUrl": "https://www.ingco.com/product/spirit-level/HSL08060",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsl08060.jpg"
+    },
+    "HSL08080": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSL08080.JPG",
+      "sourceUrl": "https://www.ingco.com/product/spirit-level/HSL08080",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsl08080.jpg"
+    },
+    "HSM01498": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSM01498.jpg",
+      "sourceUrl": "https://www.ingco.com/product/sledge-hammer/HSM01498",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsm01498.jpg"
+    },
+    "HSM01598": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSM01598.jpg",
+      "sourceUrl": "https://www.ingco.com/product/sledge-hammer/HSM01598",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsm01598.jpg"
+    },
+    "HSTH03498": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSTH03498.jpg",
+      "sourceUrl": "https://www.ingco.com/product/stoning-hammer/HSTH03498",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsth03498.jpg"
+    },
+    "HSTH03598": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSTH03598.jpg",
+      "sourceUrl": "https://www.ingco.com/product/stoning-hammer/HSTH03598",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsth03598.jpg"
+    },
+    "HSTH041000": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSTH041000.jpg",
+      "sourceUrl": "https://www.ingco.com/product/stoning-hammer/HSTH041000",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsth041000.jpg"
+    },
+    "HSTH041500": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/HSTH041500.JPG",
+      "sourceUrl": "https://www.ingco.com/product/stoning-hammer/HSTH041500",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsth041500.jpg"
+    },
+    "HSTH042000": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/2008181423465/HSTH042000.JPG",
+      "sourceUrl": "https://www.ingco.com/product/stoning-hammer/HSTH042000",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsth042000.jpg"
+    },
+    "HSTH8802": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSTH8802.jpg",
+      "sourceUrl": "https://www.ingco.com/product/stoning-hammer/HSTH8802",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsth8802.jpg"
+    },
+    "HSTH8804": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HSTH8804.jpg",
+      "sourceUrl": "https://www.ingco.com/product/stoning-hammer/HSTH8804",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hsth8804.jpg"
+    },
+    "HWB02250": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/HWB02250.JPG",
+      "sourceUrl": "https://www.ingco.com/product/wire-brusher/HWB02250",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/hwb02250.jpg"
+    },
+    "JP07508": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/JP07508.JPG",
+      "sourceUrl": "https://www.ingco.com/product/water-pump/JP07508",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/jp07508.jpg"
+    },
+    "JP11008": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/JP11008.JPG",
+      "sourceUrl": "https://www.ingco.com/product/water-pump/JP11008",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/jp11008.jpg"
+    },
+    "JP15008": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/JP15008.JPG",
+      "sourceUrl": "https://www.ingco.com/product/water-pump/JP15008",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/jp15008.jpg"
+    },
+    "JPT07508": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/JPT07508.JPG",
+      "sourceUrl": "https://www.ingco.com/product/water-pump/JPT07508",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/jpt07508.jpg"
+    },
+    "MHF15001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/MHF15001.JPG",
+      "sourceUrl": "https://www.ingco.com/product/water-pump/MHF15001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/mhf15001.jpg"
+    },
+    "SPC3708": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/SPC3708.jpg",
+      "sourceUrl": "https://www.ingco.com/product/submersible-pump/SPC3708",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/spc3708.jpg"
+    },
+    "SPC4001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/SPC4001.jpg",
+      "sourceUrl": "https://www.ingco.com/product/submersible-pump/SPC4001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/spc4001.jpg"
+    },
+    "SPC5508": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/SPC5508.jpg",
+      "sourceUrl": "https://www.ingco.com/product/submersible-pump/SPC5508",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/spc5508.jpg"
+    },
+    "SPC7508": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/SPC7508.jpg",
+      "sourceUrl": "https://www.ingco.com/product/submersible-pump/SPC7508",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/spc7508.jpg"
+    },
+    "VBP1381": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/VBP1381.JPG",
+      "sourceUrl": "https://www.ingco.com/product/vibrator-poker/VBP1381",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/vbp1381.jpg"
+    },
+    "VBP1451": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/VBP1451.JPG",
+      "sourceUrl": "https://www.ingco.com/product/vibrator-poker/VBP1451",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/vbp1451.jpg"
+    },
+    "VPM37018": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20220321140000706/VPM37018.jpg",
+      "sourceUrl": "https://www.ingco.com/product/water-pump/VPM37018",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/vpm37018.jpg"
+    },
+    "VPM3708": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/VPM3708.JPG",
+      "sourceUrl": "https://www.ingco.com/product/water-pump/VPM3708",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/vpm3708.jpg"
+    },
+    "VPM5508": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/VPM5508.JPG",
+      "sourceUrl": "https://www.ingco.com/product/water-pump/VPM5508",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/vpm5508.jpg"
+    },
+    "VPM7508": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/VPM7508.JPG",
+      "sourceUrl": "https://www.ingco.com/product/water-pump/VPM7508",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/vpm7508.jpg"
+    },
+    "WAPS001": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/WAPS001.jpg",
+      "sourceUrl": "https://www.ingco.com/product/automatic-pump-control/WAPS001",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/waps001.jpg"
+    },
+    "WAPS002": {
+      "imageUrl": "https://www.ingco.com/userfiles/1/images/photo/20200730/WAPS002.JPG",
+      "sourceUrl": "https://www.ingco.com/product/automatic-pump-control/WAPS002",
+      "provider": "INGCO",
+      "match": "exact",
+      "localPath": "/images/catalogue/waps002.jpg"
+    }
+  },
+  "unresolved": [],
+  "downloadFailures": []
+}

@@ -6,15 +6,18 @@ A responsive industrial product catalogue and quote-request experience for Starl
 
 - Industrial Starlite/INGCO visual system with a responsive dual-brand hero
 - 193 statically generated product-detail pages
-- Product search, category and brand filters, availability filters, sorting, and comparison
+- Product search, category and brand filters, availability filters, sorting, comparison, and 12-item pagination
 - Focused homepage journey that keeps the complete range inside the catalogue
 - Persistent quote list with a request-received confirmation and optional WhatsApp handoff
 - Local quote-history dashboard for dealer follow-up
 - Branded Onitsha location panel with an external directions handoff
 - Responsive home, catalogue, product, quote, dealer, about, and contact experiences
-- Original generated category and reference visuals with transparent backgrounds
+- Exact-SKU INGCO catalogue image links with generated transparent fallbacks
 
-Generated product renders are presentation/reference visuals, not official model photography. Exact product appearance should be confirmed before publishing a final commercial catalogue.
+External product photographs are temporary pitch-stage references. Exact product
+appearance and image-use approval should be confirmed before publishing a final
+commercial catalogue. The project-only image disclaimer and takedown process are
+documented in [`docs/IMAGE_USE_AND_ATTRIBUTION.md`](docs/IMAGE_USE_AND_ATTRIBUTION.md).
 
 ## Stack
 
@@ -51,11 +54,17 @@ components/             Shared UI, catalogue, quote, and dealer components
 components/home/        Homepage hero and supporting sections
 lib/                    Catalogue data, quote state, WhatsApp helpers, and image mapping
 public/images/tools/    Generated transparent tool visuals
+scripts/                Repeatable product-image source refresh
 ```
 
 ## Catalogue and quote data
 
 Catalogue records currently live in `lib/ingco-catalogue.ts` and `lib/data.ts`. Quote selections and submitted quote history are stored locally in the browser. The pitch flow acknowledges the request first, then lets the buyer send a prepared copy through WhatsApp.
+
+Exact INGCO image links, source pages, and locally staged pitch assets live in
+`lib/product-image-links.generated.json`. Refresh them from the public catalogue
+with `npm run images:refresh`. Local generated cutouts remain available when an
+external image is removed, blocked, or temporarily unavailable.
 
 ## Pitch-stage scope
 

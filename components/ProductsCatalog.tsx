@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { LayoutGrid, List, SlidersHorizontal } from "lucide-react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { ChevronLeft, ChevronRight, LayoutGrid, List, SlidersHorizontal } from "lucide-react";
 import { brands, categories, getBrand, getCategory, industries, products } from "@/lib/data";
 import type { AvailabilityStatus, Product } from "@/lib/types";
 import { ProductCard } from "./ProductCard";
@@ -26,6 +26,30 @@ const availabilityOptions: { value: AvailabilityStatus; label: string }[] = [
 ];
 
 const MAX_COMPARE = 4;
+const PAGE_SIZE = 12;
+
+type PaginationItem = number | "left-gap" | "right-gap";
+
+function parsePage(value: string | null) {
+  const parsed = Number(value);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : 1;
+}
+
+function getPaginationItems(currentPage: number, totalPages: number): PaginationItem[] {
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, index) => index + 1);
+  }
+
+  if (currentPage <= 4) {
+    return [1, 2, 3, 4, 5, "right-gap", totalPages];
+  }
+
+  if (currentPage >= totalPages - 3) {
+    return [1, "left-gap", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+  }
+
+  return [1, "left-gap", currentPage - 1, currentPage, currentPage + 1, "right-gap", totalPages];
+}
 
 function FilterGroup({
   title,
@@ -88,7 +112,10 @@ function ProductListRow({
   const displaySpecs = product.specs.filter((s) => s.label !== "Feature").slice(0, 3);
 
   return (
-    <div className="flex flex-col gap-4 border border-brand-border bg-brand-surface p-4 transition hover:border-brand-orange/45 sm:flex-row sm:items-center">
+    <div
+      data-product-row={product.sku}
+      className="flex flex-col gap-4 border border-brand-border bg-brand-surface p-4 transition hover:border-brand-orange/45 sm:flex-row sm:items-center"
+    >
       <Link href={`/products/${product.slug}`} className="shrink-0">
         <ProductVisual
           product={product}
@@ -152,6 +179,9 @@ function ProductListRow({
 
 export function ProductsCatalog() {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const requestedPage = parsePage(searchParams.get("page"));
 
   const initialCategorySlug = searchParams.get("category");
   const initialBrandSlug = searchParams.get("brand");
@@ -181,8 +211,36 @@ export function ProductsCatalog() {
   const [compareModalOpen, setCompareModalOpen] = useState(false);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
+  function replacePage(page: number, scrollToResults = false) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (page <= 1) {
+      params.delete("page");
+    } else {
+      params.set("page", String(page));
+    }
+
+    const query = params.toString();
+    router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
+
+    if (scrollToResults) {
+      requestAnimationFrame(() => {
+        document.getElementById("catalogue-results")?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth",
+          block: "start",
+        });
+      });
+    }
+  }
+
+  function resetPage() {
+    if (requestedPage !== 1) replacePage(1);
+  }
+
   function toggle<T>(list: T[], value: T, setList: (v: T[]) => void) {
     setList(list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
+    resetPage();
   }
 
   function toggleCompare(id: string) {
@@ -231,6 +289,14 @@ export function ProductsCatalog() {
     search,
     sort,
   ]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(requestedPage, totalPages);
+  const firstVisibleIndex = (currentPage - 1) * PAGE_SIZE;
+  const visibleProducts = filtered.slice(firstVisibleIndex, firstVisibleIndex + PAGE_SIZE);
+  const resultStart = filtered.length === 0 ? 0 : firstVisibleIndex + 1;
+  const resultEnd = Math.min(firstVisibleIndex + PAGE_SIZE, filtered.length);
+  const paginationItems = getPaginationItems(currentPage, totalPages);
 
   const categoryFacets = useMemo(
     () => categories.map((c) => ({ ...c, count: products.filter((p) => p.categoryId === c.id).length })),
@@ -314,6 +380,7 @@ export function ProductsCatalog() {
     setSelectedPowerSources([]);
     setSelectedAvailability([]);
     setSearch("");
+    resetPage();
   }
 
   const compareProducts = compareIds
@@ -360,8 +427,8 @@ export function ProductsCatalog() {
         </div>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-[260px_1fr]">
-        <aside className="h-fit border border-brand-border bg-brand-surface lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+      <div className="grid min-w-0 gap-8 lg:grid-cols-[260px_1fr]">
+        <aside className="h-fit min-w-0 border border-brand-border bg-brand-surface lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
           <button
             type="button"
             onClick={() => setMobileFiltersOpen((open) => !open)}
@@ -471,12 +538,15 @@ export function ProductsCatalog() {
           </div>
         </aside>
 
-        <div>
+        <div className="min-w-0">
           <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <input
               type="search"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                resetPage();
+              }}
               placeholder="Search product, brand, model, SKU..."
               className="w-full border border-brand-border bg-brand-surface px-3.5 py-2.5 text-sm text-brand-white placeholder:text-brand-steel-dim focus:border-brand-orange focus:outline-none sm:max-w-xs"
             />
@@ -484,7 +554,10 @@ export function ProductsCatalog() {
               Sort by
               <select
                 value={sort}
-                onChange={(e) => setSort(e.target.value as SortKey)}
+                onChange={(e) => {
+                  setSort(e.target.value as SortKey);
+                  resetPage();
+                }}
                 className="border border-brand-border bg-brand-surface px-3 py-2.5 text-sm text-brand-white focus:border-brand-orange focus:outline-none"
               >
                 <option value="featured">Featured</option>
@@ -510,13 +583,27 @@ export function ProductsCatalog() {
             </div>
           )}
 
+          {filtered.length > 0 && (
+            <div
+              id="catalogue-results"
+              className="mb-4 flex scroll-mt-28 flex-wrap items-center justify-between gap-2 border-y border-brand-border py-3"
+            >
+              <p className="font-mono-meta text-[10px] uppercase tracking-[0.12em] text-brand-steel">
+                Showing {resultStart}–{resultEnd} of {filtered.length}
+              </p>
+              <p className="font-mono-meta text-[10px] uppercase tracking-[0.12em] text-brand-steel-dim">
+                Page {currentPage} of {totalPages}
+              </p>
+            </div>
+          )}
+
           {filtered.length === 0 ? (
             <div className="border border-dashed border-brand-border py-20 text-center text-brand-steel">
               No products match these filters yet.
             </div>
           ) : view === "grid" ? (
             <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-              {filtered.map((product) => (
+              {visibleProducts.map((product) => (
                 <ProductCard
                   key={product.id}
                   product={product}
@@ -527,7 +614,7 @@ export function ProductsCatalog() {
             </div>
           ) : (
             <div className="flex flex-col gap-3">
-              {filtered.map((product) => (
+              {visibleProducts.map((product) => (
                 <ProductListRow
                   key={product.id}
                   product={product}
@@ -536,6 +623,66 @@ export function ProductsCatalog() {
                 />
               ))}
             </div>
+          )}
+
+          {filtered.length > 0 && totalPages > 1 && (
+            <nav
+              aria-label="Product catalogue pagination"
+              className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-brand-border pt-6 sm:flex-row"
+            >
+              <p className="font-mono-meta text-[10px] uppercase tracking-[0.12em] text-brand-steel-dim">
+                {resultStart}–{resultEnd} / {filtered.length} products
+              </p>
+
+              <div className="flex max-w-full items-center gap-1 overflow-x-auto pb-1">
+                <button
+                  type="button"
+                  onClick={() => replacePage(currentPage - 1, true)}
+                  disabled={currentPage === 1}
+                  className="inline-flex h-10 items-center gap-1 border border-brand-border px-3 text-[10px] font-bold uppercase tracking-[0.1em] text-brand-steel transition hover:border-brand-orange hover:text-brand-orange disabled:cursor-not-allowed disabled:opacity-35"
+                >
+                  <ChevronLeft className="h-3.5 w-3.5" />
+                  <span className="hidden sm:inline">Previous</span>
+                </button>
+
+                {paginationItems.map((item) =>
+                  typeof item === "number" ? (
+                    <button
+                      key={item}
+                      type="button"
+                      onClick={() => replacePage(item, true)}
+                      aria-current={item === currentPage ? "page" : undefined}
+                      aria-label={`Go to page ${item}`}
+                      className={`h-10 min-w-10 border px-3 font-mono-meta text-xs transition ${
+                        item === currentPage
+                          ? "border-brand-orange bg-brand-orange text-brand-graphite"
+                          : "border-brand-border text-brand-steel hover:border-brand-orange hover:text-brand-orange"
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  ) : (
+                    <span
+                      key={item}
+                      aria-hidden="true"
+                      className="flex h-10 min-w-7 items-center justify-center text-brand-steel-dim"
+                    >
+                      …
+                    </span>
+                  ),
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => replacePage(currentPage + 1, true)}
+                  disabled={currentPage === totalPages}
+                  className="inline-flex h-10 items-center gap-1 border border-brand-border px-3 text-[10px] font-bold uppercase tracking-[0.1em] text-brand-steel transition hover:border-brand-orange hover:text-brand-orange disabled:cursor-not-allowed disabled:opacity-35"
+                >
+                  <span className="hidden sm:inline">Next</span>
+                  <ChevronRight className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            </nav>
           )}
         </div>
       </div>

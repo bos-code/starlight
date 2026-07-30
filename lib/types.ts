@@ -47,6 +47,10 @@ export interface Product {
   platform?: string | null;
   /** Outbound link to the manufacturer's own product page, for confirming specifications. */
   detailUrl?: string;
+  /** Optional admin- or catalogue-provided image. Exact SKU mappings use this contract when available. */
+  imageUrl?: string;
+  /** Source page retained for image review, attribution and takedown workflows. */
+  imageSourceUrl?: string;
 }
 
 export interface BusinessSettings {

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "images:refresh": "node scripts/refresh-product-image-links.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.25.0",

@@ -1,9 +1,27 @@
 import type { Product } from "./types";
+import generatedProductImageLinks from "./product-image-links.generated.json";
 
 export interface ProductVisualAsset {
   src: string;
+  fallbackSrc?: string;
   label: string;
+  sourceUrl?: string;
+  provider?: string;
+  match?: "exact" | "reference";
 }
+
+interface ExternalProductImage {
+  imageUrl: string;
+  localPath?: string;
+  sourceUrl: string;
+  provider: string;
+  match: "exact";
+}
+
+const exactProductImages = generatedProductImageLinks.images as Record<
+  string,
+  ExternalProductImage
+>;
 
 const visuals = {
   cordlessDrill: {
@@ -45,6 +63,26 @@ const visuals = {
   handTools: {
     src: "/images/tools/hand-tools.webp",
     label: "Professional hand tools product visual",
+  },
+  hammerClaw: {
+    src: "/images/tools/hammer-claw.webp",
+    label: "Professional claw hammer product visual",
+  },
+  impactSocketSet: {
+    src: "/images/tools/impact-socket-set.webp",
+    label: "Professional impact socket set product visual",
+  },
+  batteryCharger: {
+    src: "/images/tools/battery-charger.webp",
+    label: "Cordless tool battery and charger product visual",
+  },
+  heatGun: {
+    src: "/images/tools/heat-gun.webp",
+    label: "Professional heat gun product visual",
+  },
+  circularSaw: {
+    src: "/images/tools/circular-saw.webp",
+    label: "Cordless circular saw product visual",
   },
   plateCompactor: {
     src: "/images/tools/plate-compactor.webp",
@@ -93,22 +131,29 @@ const categoryVisuals: Record<string, ProductVisualAsset> = {
 
 type ProductVisualInput = Pick<
   Product,
-  "name" | "productType" | "powerSource" | "categoryId"
+  | "name"
+  | "productType"
+  | "powerSource"
+  | "categoryId"
+  | "sku"
+  | "imageUrl"
+  | "imageSourceUrl"
 >;
 
-/**
- * Resolves each catalogue record to the closest available original product
- * visualization. Exact product-type matches win, then the category image is used.
- * The UI labels these as reference visuals so they are never presented as official
- * manufacturer photography for a specific SKU.
- */
-export function getProductVisual(
+function getFallbackVisual(
   product?: ProductVisualInput,
   categorySlug?: string,
 ): ProductVisualAsset {
   const search = `${product?.name ?? ""} ${product?.productType ?? ""}`.toLowerCase();
 
   if (categorySlug === "air-tools") return visuals.pneumaticWrench;
+  if (/battery|charger/.test(search)) return visuals.batteryCharger;
+  if (/impact socket|socket set/.test(search)) return visuals.impactSocketSet;
+  if (/heat gun/.test(search)) return visuals.heatGun;
+  if (/circular saw|jig saw|reciprocating saw/.test(search)) return visuals.circularSaw;
+  if (/\bhammer\b/.test(search) && !/rotary|demolition|breaker|drill/.test(search)) {
+    return visuals.hammerClaw;
+  }
   if (/\bcombo\b|\bkit\b/.test(search) && categorySlug === "cordless-tools") {
     return visuals.comboKit;
   }
@@ -131,6 +176,31 @@ export function getProductVisual(
   if (/drill|screwdriver/.test(search)) return visuals.cordlessDrill;
 
   return categoryVisuals[categorySlug ?? ""] ?? visuals.handTools;
+}
+
+/**
+ * Exact admin/catalogue image URLs win. Every external image retains a local,
+ * product-family fallback so blocked or removed hotlinks never create a blank card.
+ */
+export function getProductVisual(
+  product?: ProductVisualInput,
+  categorySlug?: string,
+): ProductVisualAsset {
+  const fallback = getFallbackVisual(product, categorySlug);
+  if (!product) return fallback;
+
+  const mapped = exactProductImages[product.sku];
+  const imageUrl = product.imageUrl ?? mapped?.localPath ?? mapped?.imageUrl;
+  if (!imageUrl) return fallback;
+
+  return {
+    src: imageUrl,
+    fallbackSrc: fallback.src,
+    label: `${product.name} ${product.sku} product image`,
+    sourceUrl: product.imageSourceUrl ?? mapped?.sourceUrl,
+    provider: product.imageUrl ? "Catalogue admin" : mapped?.provider,
+    match: "exact",
+  };
 }
 
 export function getCategoryVisual(categorySlug: string): ProductVisualAsset {

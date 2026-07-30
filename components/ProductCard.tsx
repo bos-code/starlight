@@ -23,7 +23,10 @@ export function ProductCard({ product, compareChecked = false, onToggleCompare }
   const displaySpecs = product.specs.filter((s) => s.label !== "Feature").slice(0, 3);
 
   return (
-    <div className="group flex flex-col overflow-hidden border border-brand-border bg-brand-surface transition duration-300 hover:-translate-y-0.5 hover:border-brand-orange/60 hover:bg-brand-surface-raised">
+    <div
+      data-product-card={product.sku}
+      className="group flex flex-col overflow-hidden border border-brand-border bg-brand-surface transition duration-300 hover:-translate-y-0.5 hover:border-brand-orange/60 hover:bg-brand-surface-raised"
+    >
       <div className="relative">
         <Link href={`/products/${product.slug}`} className="block">
           <ProductVisual
