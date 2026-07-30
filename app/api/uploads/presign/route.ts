@@ -1,6 +1,4 @@
-// app/api/uploads/presign/route.ts
-// Issues presigned upload URLs for direct browser-to-R2 uploads.
-// Files land in quarantine first — the file-scan worker validates them.
+
 
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';

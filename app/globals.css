@@ -140,3 +140,107 @@ body {
     animation: none;
   }
 }
+
+/* Reference-led Starlite home hero */
+.starlite-hero {
+  --hero-yellow: #ffd000;
+}
+
+.starlite-hero__backdrop {
+  object-position: center;
+  opacity: 0.78;
+}
+
+.starlite-hero__shade {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.82) 45%, rgba(0, 0, 0, 0.62) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.6));
+}
+
+.hero-button {
+  display: inline-flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  border-radius: 0.35rem;
+  padding: 0.85rem 1.65rem;
+  font-family: var(--font-heading), Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+}
+
+.hero-button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+.hero-button--primary,
+.hero-button--compact {
+  border: 1px solid var(--hero-yellow);
+  background: var(--hero-yellow);
+  color: #080808;
+  box-shadow: 0 8px 28px rgba(255, 208, 0, 0.16);
+}
+
+.hero-button--primary:hover,
+.hero-button--compact:hover {
+  background: #ffe04a;
+}
+
+.hero-button--outline {
+  border: 2px solid var(--hero-yellow);
+  background: rgba(0, 0, 0, 0.62);
+  color: white;
+}
+
+.hero-button--outline:hover {
+  background: rgba(255, 208, 0, 0.1);
+}
+
+.hero-button--compact {
+  min-height: 2.6rem;
+  width: fit-content;
+  padding: 0.55rem 1rem;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 1023px) {
+  .starlite-hero__backdrop {
+    object-position: 24% center;
+  }
+
+  .starlite-hero__shade {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.94) 46%, #050505 100%);
+  }
+}
+
+@media (max-width: 639px) {
+  .starlite-hero__backdrop {
+    height: 44rem !important;
+    object-position: 21% top;
+  }
+
+  .hero-glass-grid > :nth-child(odd) {
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-button,
+  .starlite-hero .group > div {
+    transition: none;
+  }
+
+  .hero-button:hover {
+    transform: none;
+  }
+}
