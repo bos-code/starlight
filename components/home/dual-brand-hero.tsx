@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   Truck,
   Users,
-  Wrench,
 } from "lucide-react";
 import { brands, products } from "@/lib/data";
 import { businessSettings } from "@/config/business";
